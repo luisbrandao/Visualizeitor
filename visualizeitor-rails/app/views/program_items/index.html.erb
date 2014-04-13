@@ -1,0 +1,29 @@
+<h1>Listing program_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Row</th>
+      <th>Column</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @program_items.each do |program_item| %>
+      <tr>
+        <td><%= program_item.row %></td>
+        <td><%= program_item.column %></td>
+        <td><%= link_to 'Show', program_item %></td>
+        <td><%= link_to 'Edit', edit_program_item_path(program_item) %></td>
+        <td><%= link_to 'Destroy', program_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Program item', new_program_item_path %>

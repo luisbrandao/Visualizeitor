@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Row:</strong>
+  <%= @program_item.row %>
+</p>
+
+<p>
+  <strong>Column:</strong>
+  <%= @program_item.column %>
+</p>
+
+<%= link_to 'Edit', edit_program_item_path(@program_item) %> |
+<%= link_to 'Back', program_items_path %>

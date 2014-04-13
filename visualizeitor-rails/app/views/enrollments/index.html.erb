@@ -1,0 +1,35 @@
+<h1>Listing enrollments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Decimal</th>
+      <th>Decimal</th>
+      <th>Year</th>
+      <th>Semester</th>
+      <th>Status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enrollments.each do |enrollment| %>
+      <tr>
+        <td><%= enrollment.decimal %></td>
+        <td><%= enrollment.decimal %></td>
+        <td><%= enrollment.year %></td>
+        <td><%= enrollment.semester %></td>
+        <td><%= enrollment.status %></td>
+        <td><%= link_to 'Show', enrollment %></td>
+        <td><%= link_to 'Edit', edit_enrollment_path(enrollment) %></td>
+        <td><%= link_to 'Destroy', enrollment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Enrollment', new_enrollment_path %>
