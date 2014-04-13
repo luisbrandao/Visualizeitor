@@ -1,4 +1,16 @@
 Visualizeitor::Application.routes.draw do
+  resources :program_items
+
+  resources :students
+
+  resources :enrollments
+
+  resources :courses
+
+  resources :programs
+
+  resources :majors
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
