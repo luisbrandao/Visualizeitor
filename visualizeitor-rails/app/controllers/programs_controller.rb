@@ -10,6 +10,10 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.json
   def show
+    respond_to do |format|
+        format.html
+        format.json { render json: @program, :include => { :program_items => { :include => :course }}}
+      end
   end
 
   # GET /programs/new
