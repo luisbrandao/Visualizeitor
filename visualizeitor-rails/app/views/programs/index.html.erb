@@ -19,6 +19,7 @@
         <td><%= program.code %></td>
         <td><%= program.year %></td>
         <td><%= link_to 'Show', program %></td>
+        <td><%= link_to 'Alunos', program_students_path(program) %></td>
         <td><%= link_to 'Edit', edit_program_path(program) %></td>
         <td><%= link_to 'Destroy', program, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

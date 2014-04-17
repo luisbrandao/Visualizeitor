@@ -12,8 +12,10 @@ fila = 0
 end
 
 bcc = Major.create({name: "BCC"})
-grade_nova = Program.create({name: "Grade Nova"})
+grade_nova = Program.create({name: "Grade Nova", code: "1227"})
+grade_antiga = Program.create({name: "Grade Antiga", code: "308"})
 bcc.programs << grade_nova
+bcc.programs << grade_antiga
 
 descricao_materias_periodo1 = cria_periodo_com_descricao_materias(
 [
@@ -81,3 +83,82 @@ grade_nova.program_items << descricao_materias_periodo4
 grade_nova.program_items << descricao_materias_periodo5
 grade_nova.program_items << descricao_materias_periodo6
 grade_nova.program_items << descricao_materias_periodo7
+
+
+p1 = cria_periodo_com_descricao_materias(
+[
+{code:"CI055",  name:"ALGORITMOS E ESTRUTURAS DE DADOS I"},
+{code:"CI063",  name:"MÁQUINAS PROGRAMÁVEIS"},
+{code:"CI066",  name:"OFICINA DE PROGRAMAÇÃO"},
+{code:"CM045",  name:"GEOMETRIA ANALÍTICA I"},
+{code:"CM046",  name:"INTRODUÇÃO À ÁLGEBRA"},
+{code:"CM201",  name:"CÁLCULO DIFERENCIAL E INTEGRAL I"}
+  ], 0)
+
+p2 = cria_periodo_com_descricao_materias(
+[
+{code:"CI056",  name:"ALGORITMOS E ESTRUTURAS DE DADOS II"},
+{code:"CI067",  name:"OFICINA DE COMPUTAÇÃO"},
+{code:"CI068",  name:"CIRCUITOS LÓGICOS"},
+{code:"CM005",  name:"ÁLGEBRA LINEAR"},
+{code:"CM202",  name:"CÁLCULO DIFERENCIAL E INTEGRAL II"},
+{code:"CI202",  name:"MÉTODOS NUMÉRICOS"}],1)
+
+p3 = cria_periodo_com_descricao_materias(
+  [
+{code:"CI057",  name:"ALGORITMOS E ESTRUTURAS DE DADOS III"},
+{code:"CI064",  name:"SOFTWARE BÁSICO I"},
+{code:"CI210",  name:"PROJETOS DIGITAIS E MICROPROCESSADORES"},
+{code:"CI237",  name:"MATEMÁTICA DISCRETA"},
+{code:"SA214",  name:"INTRODUÇÃO À TEORIA GERAL DE ADMINISTRAÇÃO"},
+{code:"CE003",  name:"ESTATÍSTICA II"}],2)
+
+p4 = cria_periodo_com_descricao_materias(
+[
+{code:"CI059",  name:"INTRODUÇÃO À TEORIA DA COMPUTAÇÃO"},
+{code:"CI060",  name:"SEMINÁRIOS DE INFORMÁTICA I"},
+{code:"CI065",  name:"ALGORITMOS E TEORIA DOS GRAFOS"},
+{code:"CI069",  name:"ADMINISTRAÇÃO DE EMPRESAS DE INFORMÁTICA"},
+{code:"CI212",  name:"ORGANIZAÇÃO E ARQUITETURA DE COMPUTADORES"},
+{code:"CI219",  name:"ANÁLISE E PROJETO DE SISTEMAS"},
+{code:"CM224",  name:"PESQUISA OPERACIONAL I"}],3)
+
+p5 = cria_periodo_com_descricao_materias([
+{code:"CI058",  name:"REDES DE COMPUTADORES I"},
+{code:"CI062",  name:"TECNICAS ALTERNATIVAS DE PROGRAMAÇÃO"},
+{code:"CI211",  name:"CONSTRUÇÃO DE COMPILADORES"},
+{code:"CI215",  name:"SISTEMAS OPERACIONAIS"},
+{code:"CI235",  name:"ESTÁGIO SUPERVISIONADO I"},
+{code:"SIN070",  name:"ORIENTAÇÃO BIBLIOGRÁFICA - B"},
+{code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 4)
+
+p6 = cria_periodo_com_descricao_materias([
+{code:"CI061",  name:"REDES DE COMPUTADORES II"},
+{code:"CI214",  name:"ESTRUTURAS DE LINGUAGENS DE PROGRAMAÇÃO"},
+{code:"CI218",  name:"SISTEMAS DE BANCO DE DADOS"},
+{code:"CI236",  name:"ESTÁGIO SUPERVISIONADO II"},
+{code:"OPT",  name:"DISCIPLINA OPTATIVA"},
+{code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 5)
+
+p7 = cria_periodo_com_descricao_materias([
+{code:"CI220",  name:"TEORIA DE SISTEMAS"},
+{code:"CI221",  name:"ENGENHARIA DE SOFTWARE"},
+{code:"TGI",  name:"TRABALHO DE GRADUAÇÃO I"},
+{code:"OPT",  name:"DISCIPLINA OPTATIVA"},
+{code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 6)
+
+p8 = cria_periodo_com_descricao_materias([
+{code:"TGII",  name:"TRABALHO DE GRADUAÇÃO II"},
+{code:"OPT",  name:"DISCIPLINA OPTATIVA"},
+{code:"OPT",  name:"DISCIPLINA OPTATIVA"},
+{code:"OPT",  name:"DISCIPLINA OPTATIVA"},
+{code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 7)
+
+grade_antiga.program_items << p1
+grade_antiga.program_items << p2
+grade_antiga.program_items << p3
+grade_antiga.program_items << p4
+grade_antiga.program_items << p5
+grade_antiga.program_items << p6
+grade_antiga.program_items << p7
+grade_antiga.program_items << p8

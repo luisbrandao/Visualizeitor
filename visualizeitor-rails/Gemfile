@@ -35,6 +35,7 @@ end
 gem 'execjs'
 gem 'therubyracer'
 gem 'symbolize'
+gem 'crack'
 
 
 # Use ActiveModel has_secure_password

@@ -61,6 +61,25 @@ class MajorsController < ApplicationController
     end
   end
 
+  def upload_content
+    respond_to do |format|
+      format.html
+    end
+    
+  end
+
+  def upload
+    uploaded_io = params[:program_xml]
+    crack_xml(uploaded_io)
+    
+
+
+    respond_to do |format|
+      format.html { redirect_to majors_url }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_major
@@ -70,5 +89,66 @@ class MajorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def major_params
       params.require(:major).permit(:name, :code)
+    end
+
+    def crack_xml(content_file)
+      xml_content = content_file.read
+      parsed_xml = Crack::XML.parse(xml_content)
+      alunos_curso_root = parsed_xml['ALUNOS_CURSO']
+      alunos = alunos_curso_root['ALUNO']
+
+      students = Hash.new
+
+      alunos.each do |student| 
+         grr_student = student['MATR_ALUNO']
+         enrollments = students[grr_student]
+         if (enrollments.nil?)
+          enrollments = Array.new
+          students[grr_student] = enrollments
+         end
+         enrollments.push(student)
+      end 
+
+      create_students(students) 
+    end
+
+    def create_students(students_hash)
+      students_hash.each do |grr, enrollments_xml|
+        database_student = Student.find_by_grr(grr)
+        if (database_student.nil?)
+          database_student = Student.new
+          database_student.name = enrollments_xml[0]['NOME_ALUNO']
+          database_student.grr = grr
+        end
+
+        program_code = enrollments_xml[0]['ID_VERSAO_CURSO']
+
+        database_program = Program.find_by_code(program_code)
+        if (database_program.nil?)
+          puts 'vazio'
+        else
+          database_student.program = database_program
+          fill_enrollments(database_student, enrollments_xml)
+        end
+
+        database_student.save
+
+      end
+      
+    end
+
+    def fill_enrollments(database_student, enrollments_xml)
+      enrollments_xml.each do |enrollment_xml|
+        course_code_xml = enrollment_xml['COD_ATIV_CURRIC']
+        course_database = Course.find_by_code(course_code_xml)
+        if (course_database.nil?)
+        else
+          database_student.courses << course_database
+        end
+
+        
+      end 
+
+
     end
 end

@@ -7,9 +7,13 @@ Visualizeitor::Application.routes.draw do
 
   resources :courses
 
-  resources :programs
+  resources :programs do
+    resources :students
+  end
 
   resources :majors do
+    get 'upload_content'
+    post 'upload'
     resources :programs do
       resources :students, only: :index
     end
@@ -20,7 +24,7 @@ Visualizeitor::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'majors#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
