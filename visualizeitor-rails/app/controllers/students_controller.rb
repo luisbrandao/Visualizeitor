@@ -61,6 +61,17 @@ class StudentsController < ApplicationController
     end
   end
 
+  def search
+
+    if (params[:GRR].nil? && params[:GRR].empty?)
+      # TODO: validação
+    end
+    @student = Student.find_by_grr(params[:GRR])
+    respond_to do |format|
+        format.json { render json: @student, :include => { :enrollments => { :include => :course }}}
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student

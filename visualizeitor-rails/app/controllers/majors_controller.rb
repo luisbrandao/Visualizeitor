@@ -141,12 +141,26 @@ class MajorsController < ApplicationController
       enrollments_xml.each do |enrollment_xml|
         course_code_xml = enrollment_xml['COD_ATIV_CURRIC']
         course_database = Course.find_by_code(course_code_xml)
+        # course_database = Course.where("code = ? AND program_id = ?", course_code_xml, database_student.program)
         if (course_database.nil?)
         else
-          database_student.courses << course_database
-        end
 
-        
+          new_enrollment = Enrollment.new
+          new_enrollment.course = course_database
+
+          new_enrollment.frequency = enrollment_xml['FREQUENCIA']
+
+          grade = enrollment_xml['MEDIA_FINAL'].to_i
+          if (grade > 100)
+            grade = nil
+          end
+          new_enrollment.grade = grade
+          new_enrollment.year = enrollment_xml['ANO']
+          new_enrollment.semester = enrollment_xml['PERIODO']
+          new_enrollment.status = enrollment_xml['SITUACAO']
+
+          database_student.enrollments << new_enrollment
+        end
       end 
 
 

@@ -1,7 +1,13 @@
 Visualizeitor::Application.routes.draw do
+  resources :displays
+
   resources :program_items
 
-  resources :students
+  resources :students do
+    collection do
+      get 'search'
+    end
+  end
 
   resources :enrollments
 

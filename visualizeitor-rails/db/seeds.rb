@@ -1,5 +1,14 @@
 def cria_periodo_com_descricao_materias(descricao_materias_array, periodo)
-  descricao_materias = Course.create(descricao_materias_array)
+  descricao_materias = []
+
+  descricao_materias_array.each do |desc_materia|
+    curso = Course.find_by_code(desc_materia[:code])
+    if (curso.nil?)
+      curso = Course.create(desc_materia)
+    end
+    descricao_materias.push(curso)
+  end 
+
   courses = []
 
 fila = 0
@@ -74,7 +83,17 @@ descricao_materias_periodo7 = cria_periodo_com_descricao_materias(
 [
   {code:"CI221", name:"Engenharia de Software"}, 
   {code:"CI211", name:"Construção de Compiladores"},
-  ], 6)
+  {code:"TGI",  name:"TRABALHO DE GRADUAÇÃO I"},
+  {code:"OPT",  name:"DISCIPLINA OPTATIVA"},
+  {code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 6)
+
+descricao_materias_periodo8 = cria_periodo_com_descricao_materias(
+[
+  {code:"OPT",  name:"DISCIPLINA OPTATIVA"}, 
+  {code:"OPT",  name:"DISCIPLINA OPTATIVA"},
+  {code:"TGII", name:"TRABALHO DE GRADUAÇÃO II"},
+  {code:"OPT",  name:"DISCIPLINA OPTATIVA"},
+  {code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 7)
 
 grade_nova.program_items << descricao_materias_periodo1
 grade_nova.program_items << descricao_materias_periodo2
@@ -83,6 +102,7 @@ grade_nova.program_items << descricao_materias_periodo4
 grade_nova.program_items << descricao_materias_periodo5
 grade_nova.program_items << descricao_materias_periodo6
 grade_nova.program_items << descricao_materias_periodo7
+grade_nova.program_items << descricao_materias_periodo8
 
 
 p1 = cria_periodo_com_descricao_materias(
