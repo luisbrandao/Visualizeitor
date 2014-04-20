@@ -6,6 +6,7 @@ class CreateEnrollments < ActiveRecord::Migration
       t.integer :year
       t.integer :semester
       t.string :status
+      t.string :enrollment_type
 
       t.belongs_to :student
       t.belongs_to :course

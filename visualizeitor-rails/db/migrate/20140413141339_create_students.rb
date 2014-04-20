@@ -5,6 +5,7 @@ class CreateStudents < ActiveRecord::Migration
       t.string :grr
 
       t.belongs_to :program
+      t.belongs_to :major
 
       t.timestamps
     end

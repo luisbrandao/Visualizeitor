@@ -4,7 +4,12 @@ class ProgramsController < ApplicationController
   # GET /programs
   # GET /programs.json
   def index
-    @programs = Program.all
+    if (params[:major_id])
+      @major = Major.find(params[:major_id])
+      @programs = Program.all.where(major: @major)
+    else
+      @programs = Program.all
+    end
   end
 
   # GET /programs/1

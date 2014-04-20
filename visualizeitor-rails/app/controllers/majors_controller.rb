@@ -65,14 +65,12 @@ class MajorsController < ApplicationController
     respond_to do |format|
       format.html
     end
-    
   end
 
   def upload
+    @major = Major.find(params[:major_id])
     uploaded_io = params[:program_xml]
     crack_xml(uploaded_io)
-    
-
 
     respond_to do |format|
       format.html { redirect_to majors_url }
@@ -130,23 +128,24 @@ class MajorsController < ApplicationController
           database_student.program = database_program
           fill_enrollments(database_student, enrollments_xml)
         end
+        database_student.major = @major
 
         database_student.save
-
       end
-      
     end
 
     def fill_enrollments(database_student, enrollments_xml)
       enrollments_xml.each do |enrollment_xml|
         course_code_xml = enrollment_xml['COD_ATIV_CURRIC']
         course_database = Course.find_by_code(course_code_xml)
-        # course_database = Course.where("code = ? AND program_id = ?", course_code_xml, database_student.program)
         if (course_database.nil?)
+          course_name_xml = enrollment_xml['NOME_ATIV_CURRIC']
+          course_database = Course.create(code: course_code_xml, name:course_name_xml)
         else
 
           new_enrollment = Enrollment.new
           new_enrollment.course = course_database
+          new_enrollment.enrollment_type = enrollment_xml['DESCR_ESTRUTURA']
 
           new_enrollment.frequency = enrollment_xml['FREQUENCIA']
 

@@ -5,6 +5,17 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+
+    if (params[:program_id])
+      @program = Program.find(params[:program_id])
+      @students = @students.where(:program => @program)
+    end
+
+    if (params[:major_id])
+      @major = Major.find(params[:major_id])
+      @students = @students.where(:major => @major)
+    end
+
   end
 
   # GET /students/1

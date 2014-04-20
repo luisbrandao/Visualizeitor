@@ -23,6 +23,7 @@ Visualizeitor::Application.routes.draw do
     resources :programs do
       resources :students, only: :index
     end
+    resources :students
 
   end
 

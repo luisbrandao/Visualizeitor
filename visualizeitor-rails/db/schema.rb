@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20140413143255) do
     t.integer  "year"
     t.integer  "semester"
     t.string   "status"
+    t.string   "enrollment_type"
     t.integer  "student_id"
     t.integer  "course_id"
     t.datetime "created_at"
@@ -61,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140413143255) do
     t.string   "name"
     t.string   "grr"
     t.integer  "program_id"
+    t.integer  "major_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

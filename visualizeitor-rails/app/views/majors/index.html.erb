@@ -18,6 +18,7 @@
         <td><%= major.code %></td>
         <td><%= link_to 'Show', major %></td>
         <td><%= link_to 'Fazer Upload XML', major_upload_content_path(major) %></td>
+        <td><%= link_to 'Alunos', major_students_path(major) %></td>
         <td><%= link_to 'Grades', major_programs_path(major) %></td>
         <td><%= link_to 'Edit', edit_major_path(major) %></td>
         <td><%= link_to 'Destroy', major, method: :delete, data: { confirm: 'Are you sure?' } %></td>
