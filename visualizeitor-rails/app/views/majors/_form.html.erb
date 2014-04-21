@@ -1,25 +1,20 @@
-<%= form_for(@major) do |f| %>
-  <% if @major.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@major.errors.count, "error") %> prohibited this major from being saved:</h2>
-
-      <ul>
-      <% @major.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @major, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :code, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :code, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                majors_path, :class => 'btn' %>
   </div>
 <% end %>

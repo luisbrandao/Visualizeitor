@@ -63,14 +63,16 @@
         <div class="span2">
         </div><!--/span-->
         <div class="span8">
- 			<%= yield %>
+aalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal aaalalalla lalalla lal llal a
           <%= bootstrap_flash %>
 
         </div>
 <div class="span2"></div>
       </div><!--/row-->
 
-
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
 
     </div> <!-- /container -->
 
