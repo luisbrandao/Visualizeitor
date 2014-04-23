@@ -19,10 +19,34 @@ function didClickButtonSearchGRR()
       type: 'GET',
       data: {GRR: enteredGRR},
       success: function (data) {
-        var stringified = JSON.stringify(data, null, 2);  
-        $('#result').html(stringified);
+        didDownloadStudent(data);
       }
     });
 
+};
+
+function didDownloadStudent(student)
+{
+  var stringified = JSON.stringify(student, null, 2);  
+  $('#student-result').html(stringified);
+
+  downloadStudentProgram(student);
+}
+
+function downloadStudentProgram(student)
+{
+    $.ajax({
+      url: '/programs/'+ student.program_id + '.json',
+      type: 'GET',
+      success: function (data) {
+        didDownloadProgram(data);
+      }
+    });
+};
+
+function didDownloadProgram(program)
+{
+  var stringified = JSON.stringify(program, null, 2);  
+  $('#program-result').html(stringified);
 }
 

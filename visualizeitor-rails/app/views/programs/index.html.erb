@@ -6,11 +6,10 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:code) %></th>
-      <th><%= model_class.human_attribute_name(:year) %></th>
-      <th><%= model_class.human_attribute_name(:major_id) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th>Nome</th>
+      <th>Código</th>
+      <th>Ano</th>
+      <th>Curso</th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -21,16 +20,11 @@
         <td><%= program.name %></td>
         <td><%= program.code %></td>
         <td><%= program.year %></td>
-        <td><%= program.major_id %></td>
-        <td><%=l program.created_at %></td>
+        <td><%= program.major.name %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_program_path(program), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      program_path(program),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+                      edit_program_path(program), :class => 'btn' %>
+          <%= link_to("Estudantes", program_students_path(program), class:"btn")%>
         </td>
       </tr>
     <% end %>

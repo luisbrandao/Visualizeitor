@@ -1,4 +1,10 @@
+<div class="page-header">
+  <h1><%=link_to(@major.name, major_path(@major))%>> Upload de Grade</h1>
+</div>
+<p>Você pode fazer upload do histórico acadêmico de um aluno utilizando um arquivo no formato XML com a seguinte configuração:</p>
+
+<%= image_tag("xml_example", alt: "Exemplo do formato") %>
 <%= form_tag({action: :upload}, multipart: true) do %>
-  <%= file_field_tag 'program_xml' %>
-  <%= submit_tag("Search") %>
+  <%= file_field_tag 'program_xml', class: "btn" %>
+  <%= submit_tag("Upload", class: "btn-success") %>
 <% end %>

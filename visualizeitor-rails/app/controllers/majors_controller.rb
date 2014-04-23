@@ -62,6 +62,8 @@ class MajorsController < ApplicationController
   end
 
   def upload_content
+    @major = Major.find(params[:major_id])
+
     respond_to do |format|
       format.html
     end

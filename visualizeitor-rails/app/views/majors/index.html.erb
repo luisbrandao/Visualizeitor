@@ -1,6 +1,6 @@
 <%- model_class = Major -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Cursos</h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -8,7 +8,6 @@
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:code) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -18,15 +17,14 @@
         <td><%= link_to major.id, major_path(major) %></td>
         <td><%= major.name %></td>
         <td><%= major.code %></td>
-        <td><%=l major.created_at %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_major_path(major), :class => 'btn btn-mini' %>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      major_path(major),
-                      :method => :delete,
-                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                      :class => 'btn btn-mini btn-danger' %>
+                      edit_major_path(major), :class => 'btn' %>
+          <%= link_to t('.upload'),
+                      major_upload_content_path(major), :class => 'btn' %>
+          <%= major.programs.length > 0 ? link_to("Grades", major_programs_path(major), class: "btn") : ""%>
+          <%= link_to("Estudantes", major_students_path(major), class: "btn")%>
+
         </td>
       </tr>
     <% end %>

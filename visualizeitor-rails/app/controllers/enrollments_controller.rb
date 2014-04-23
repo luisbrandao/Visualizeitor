@@ -5,6 +5,11 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments.json
   def index
     @enrollments = Enrollment.all
+
+    if (params[:student_id])
+      @student = Student.find(params[:student_id])
+      @enrollments = @enrollments.where(student: @student)
+    end
   end
 
   # GET /enrollments/1
