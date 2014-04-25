@@ -10,6 +10,11 @@ class EnrollmentsController < ApplicationController
       @student = Student.find(params[:student_id])
       @enrollments = @enrollments.where(student: @student)
     end
+
+    if (params[:course_id])
+      @course = Course.find(params[:course_id])
+      @enrollments = @enrollments.where(course: @course)
+    end
   end
 
   # GET /enrollments/1

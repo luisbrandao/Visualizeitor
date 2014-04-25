@@ -1,6 +1,11 @@
 <%- model_class = Student -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+<%if(@major)%>
+  <h1><%=link_to(@major.name, major_path(@major))%> > Estudantes</h1>
+<%else%>
+  <h1>Estudantes</h1>
+<%end%>
+
 </div>
 <table class="table table-striped">
   <thead>

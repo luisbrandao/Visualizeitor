@@ -1,6 +1,6 @@
 <%- model_class = Course -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1>Disciplinas</h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -20,6 +20,7 @@
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_course_path(course), :class => 'btn' %>
+          <%= link_to('Matriculas', course_enrollments_path(course), class: 'btn')%>
         </td>
       </tr>
     <% end %>

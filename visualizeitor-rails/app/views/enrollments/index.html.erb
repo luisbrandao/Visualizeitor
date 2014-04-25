@@ -1,6 +1,12 @@
 <%- model_class = Enrollment -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <%if (@course)%>
+    <h1><%=link_to(@course.name, course_path(@course))%> > Matriculas</h1>
+  <%else%>
+    <h1>Matriculas</h1>
+  <%end%>
+
+
 </div>
 <table class="table table-striped">
   <thead>
@@ -12,7 +18,7 @@
 
       <th>Nota</th>
       <th>Frequência</th>
-      <th><%= model_class.human_attribute_name(:year) %></th>
+      <th>Ano</th>
       <th>Semestre</th>
       <th>Situação</th>
       <th>Tipo</th>
@@ -26,7 +32,7 @@
         <td><%= link_to enrollment.id, enrollment_path(enrollment) %></td>
 
         <% if @student.nil?%>
-          <td><%= enrollment.student.name %></td>
+          <td><%= link_to(enrollment.student.name, student_path(enrollment.student)) %></td>
         <%end%>
 
         <td><%= enrollment.grade %></td>
