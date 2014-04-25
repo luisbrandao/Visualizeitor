@@ -13,7 +13,12 @@ Visualizeitor::Application.routes.draw do
   resources :enrollments
 
   resources :courses do
-    resources :enrollments, only: :index
+    resources :enrollments, only: [:index, :chart] do
+      collection do
+        get 'chart'
+      end
+      
+    end
   end
 
   resources :programs do

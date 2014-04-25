@@ -1,3 +1,9 @@
+<%if (@course)%>
+  <%= javascript_include_tag 'highcharts.js' %>
+  <%= javascript_include_tag 'enrollments_chart.js' %>
+  <%= hidden_field_tag 'course_id', @course.id %>
+<%end%>
+
 <%- model_class = Enrollment -%>
 <div class="page-header">
   <%if (@course)%>
@@ -8,6 +14,21 @@
 
 
 </div>
+
+
+
+  <%if (@course)%>
+    <div id="container"></div>
+
+
+    <p><%=@approved_number%> alunos aprovados.</p>
+    <p><%=@disapproved_grade_number%> alunos reprovados por nota.</p>
+    <p><%=@disapproved_frequency_number%> alunos reprovados por frequência.</p>
+    <p><%=@enrollments.length%> matrículas registradas.</p>
+    
+  <%else%>
+  <%end%>
+
 <table class="table table-striped">
   <thead>
     <tr>
@@ -22,7 +43,10 @@
       <th>Semestre</th>
       <th>Situação</th>
       <th>Tipo</th>
-      <th>Disciplina</th>
+
+      <%if(@course.nil?)%>
+        <th>Disciplina</th>
+      <%end%>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -41,7 +65,9 @@
         <td><%= enrollment.semester %></td>
         <td><%= enrollment.status %></td>
         <td><%= enrollment.enrollment_type %></td>
-        <td><%= enrollment.course.name %></td>
+        <%if(@course.nil?)%>
+          <td><%= enrollment.course.name %></td>
+        <%end%>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_enrollment_path(enrollment), :class => 'btn' %>

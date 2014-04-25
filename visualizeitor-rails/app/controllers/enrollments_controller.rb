@@ -4,7 +4,7 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments
   # GET /enrollments.json
   def index
-    @enrollments = Enrollment.all
+    @enrollments = Enrollment.all.order(year: :asc).order(semester: :asc)
 
     if (params[:student_id])
       @student = Student.find(params[:student_id])
@@ -14,8 +14,84 @@ class EnrollmentsController < ApplicationController
     if (params[:course_id])
       @course = Course.find(params[:course_id])
       @enrollments = @enrollments.where(course: @course)
+
+      @approved_number = 0
+      @disapproved_grade_number = 0
+      @disapproved_frequency_number = 0
+
+      @enrollments.each do |enrollment|
+        if (enrollment.status.eql?('Aprovado'))
+          @approved_number = @approved_number + 1
+        elsif(enrollment.status.eql?('Reprovado por nota'))
+            @disapproved_grade_number = @disapproved_grade_number + 1
+        elsif(enrollment.status.eql?('Reprovado por Frequência'))
+          @disapproved_frequency_number = @disapproved_frequency_number + 1
+        end
+      end
+
     end
   end
+
+  def chart
+    if (params[:course_id])
+      @course = Course.find(params[:course_id])
+    end
+
+    enrollments = @course.enrollments
+
+    json_wrapper = Hash.new
+    json_wrapper[:years] = Array.new
+    json_wrapper[:approved] = Array.new
+    json_wrapper[:disapproved_grade_number] = Array.new
+    json_wrapper[:disapproved_frequency_number] = Array.new
+
+    hash_enrollments = Hash.new
+
+    enrollments.each do |enrollment|
+      year = enrollment.year
+      semester = enrollment.semester
+      if hash_enrollments[year].nil?
+        hash_enrollments[year] = Hash.new
+        hash_enrollments[year][1] = Array.new
+        hash_enrollments[year][2] = Array.new
+      end
+      hash_enrollments[year][semester].push(enrollment)
+    end
+
+    hash_enrollments.sort.map do |year, semester|
+      semester.sort.map do |number, enrollments|
+        puts "semestre: #{number} matriculas: #{enrollments}"
+        json_wrapper[:years].push("#{year}/#{number}")
+        approved = 0
+        disapproved_grade_number = 0
+        disapproved_frequency_number = 0
+        enrollments.each do |enrollment|
+          if (enrollment.status.eql?('Aprovado'))
+            approved = approved + 1
+          elsif(enrollment.status.eql?('Reprovado por nota'))
+            disapproved_grade_number = disapproved_grade_number + 1
+          elsif(enrollment.status.eql?('Reprovado por Frequência'))
+            disapproved_frequency_number = disapproved_frequency_number + 1
+          end
+        end 
+          json_wrapper[:approved].push(approved)
+          json_wrapper[:disapproved_grade_number].push(disapproved_grade_number)
+          json_wrapper[:disapproved_frequency_number].push(disapproved_frequency_number)
+
+      end
+    end
+
+    respond_to do |format|
+        if (params[:mode] == "1")
+          format.json { render json: hash_enrollments }
+        else
+          format.json { render json: json_wrapper }
+        end
+
+        format.html { redirect_to @enrollment, notice: 'Enrollment was successfully created.' }
+    end
+  end
+
 
   # GET /enrollments/1
   # GET /enrollments/1.json
