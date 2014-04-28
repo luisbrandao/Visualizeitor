@@ -157,7 +157,15 @@ class MajorsController < ApplicationController
           end
           new_enrollment.grade = grade
           new_enrollment.year = enrollment_xml['ANO']
+
           new_enrollment.semester = enrollment_xml['PERIODO']
+
+          # Fix para tipo de semestre não previsto
+          # TODO: Arrumar isso para um semestre diferente para suportar outros cursos
+          if (new_enrollment.semester <= 0)
+            new_enrollment.semester = 1
+          end
+
           new_enrollment.status = enrollment_xml['SITUACAO']
 
           database_student.enrollments << new_enrollment

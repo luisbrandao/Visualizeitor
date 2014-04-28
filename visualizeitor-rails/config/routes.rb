@@ -4,7 +4,11 @@ Visualizeitor::Application.routes.draw do
   resources :program_items
 
   resources :students do
-    resources :enrollments, only: :index
+    resources :enrollments, only: [:index, :ira_chart] do
+      collection do
+        get 'ira_chart'
+      end
+    end
     collection do
       get 'search'
     end

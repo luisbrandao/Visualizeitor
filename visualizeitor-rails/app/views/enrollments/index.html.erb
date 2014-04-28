@@ -4,21 +4,29 @@
   <%= hidden_field_tag 'course_id', @course.id %>
 <%end%>
 
+<%if (@student)%>
+  <%= javascript_include_tag 'highcharts.js' %>
+  <%= javascript_include_tag 'ira_chart.js' %>
+  <%= hidden_field_tag 'student_id', @student.id %>
+<%end%>
+
 <%- model_class = Enrollment -%>
 <div class="page-header">
   <%if (@course)%>
     <h1><%=link_to(@course.name, course_path(@course))%> > Matriculas</h1>
+  <%elsif (@student)%>
+    <h1><%=link_to(@student.name, student_path(@student))%> > Matriculas</h1>
   <%else%>
-    <h1>Matriculas</h1>
+    <h1>Matrículas</h1>
   <%end%>
 
 
 </div>
 
 
-
+<div id="container"></div>
   <%if (@course)%>
-    <div id="container"></div>
+    
 
 
     <p><%=@approved_number%> alunos aprovados.</p>
