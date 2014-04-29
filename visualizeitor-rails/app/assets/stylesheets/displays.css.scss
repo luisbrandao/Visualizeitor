@@ -1,3 +1,171 @@
 // Place all the styles related to the displays controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+body {
+	margin: 0px;
+}
+
+.grid {
+	width: 100%;
+	max-width: 1000px;
+	min-width: 755px;
+	margin: 0 auto;
+	overflow: hidden;
+	background-color: black;
+
+}
+
+.gridCell {
+	width: 100%;
+	height: 60px;
+	margin-bottom: 2%;
+	overflow: hidden;
+
+}
+
+
+/*
+
+	border-width: 3px;
+	border-style: solid;
+	border-color: yellow;
+.gridContent:hover:after{
+	padding: 5px 15px;
+    width: 220px;
+    border-radius: 5px;
+    background: #333;
+    content: 'blabla';    
+    left: 20%;
+    color: #fff; 
+}
+
+
+.gridContent:hover:before{
+    border: solid;
+    border-color: #333 transparent;
+    border-width: 6px 6px 0px 6px;
+    content: "";
+    position: absolute;
+}
+*/
+
+.gridCol {
+	float: left;
+	width: 12%;
+	background-color: black;
+	margin: 0.25%;
+
+}
+
+.gridCourseCode {
+	font-weight: bolder;
+
+}
+
+.gridContent{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	padding: 5px;
+	cursor: default;
+	line-height: 75%;
+	color: black;
+}
+
+.gridCourseName{
+	font-size: 12px;
+}
+
+.gridColTitle{
+	height: 30px;
+	text-align: center;
+	background-color: #333333;
+	color: lightgrey;
+	font-weight: bolder;
+}
+
+.statusDefault{
+	background-color: white;
+}
+
+.statusFailed{
+	background-color: red;
+}
+
+.statusCanceled{
+	background-color: pink;
+}
+
+.statusApproved{
+	background-color: green;
+}
+
+.statusExempt{
+	background-color: darkgreen;
+}
+
+.statusSuspended{
+	background-color: lightgreen;
+}
+
+.tooltip{
+	background-color: white;
+	height: 40px;
+	width: 150px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: black;
+	position: absolute;
+	display: none;
+
+
+}
+
+.tooltip:before{
+
+	border-top: 13px solid transparent;
+	border-right: 26px solid red;
+	border-bottom: 13px solid transparent;
+		width: 0;
+	height: 0;
+}
+
+.darkgrid{
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	position: absolute;
+}
+
+.tooltip-triangle {
+	width: 0;
+	height: 0;
+	margin-top: -10px;
+	position: absolute;
+	left: 20px;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 11px solid white;
+}
+
+.tooltipTable{
+	font-size: 12px;
+	width: 100%;
+	line-height: 75%;
+	text-align: center;
+}
+
+.tooltipTableTitle{
+	color: grey;
+
+}
+
+.tooltipTableStatus{
+	font-weight: bolder;
+
+}
+
+
