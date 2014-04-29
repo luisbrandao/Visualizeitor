@@ -18,8 +18,6 @@ function loadChart(data)
 	for (i = 0; i < data.grade_average.length; i++) {
 		gradeFloat[i] = parseFloat(data.grade_average[i]);
 	}
-
-
         $('#container').highcharts({
             chart: {
                 zoomType: 'x'
@@ -56,7 +54,7 @@ function loadChart(data)
                 labels: {
                     format: '{value}',
                     style: {
-                        color: '#306E73'
+                        color: '#458F8C'
                     }
                 },
                 opposite: true
@@ -66,7 +64,7 @@ function loadChart(data)
             },
             
             series: [{
-            	color: '#306E73',
+            	color: '#458F8C',
                 name: 'Quantidade de Disciplinas',
                 type: 'column',
                 yAxis: 1,
@@ -87,6 +85,4 @@ function loadChart(data)
 
             }]
         });
-    
-
 }
