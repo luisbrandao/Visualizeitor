@@ -41,6 +41,9 @@ class ProgramItemsController < ApplicationController
   # PATCH/PUT /program_items/1.json
   def update
     respond_to do |format|
+
+      puts program_item_params
+
       if @program_item.update(program_item_params)
         format.html { redirect_to @program_item, notice: 'Program item was successfully updated.' }
         format.json { head :no_content }

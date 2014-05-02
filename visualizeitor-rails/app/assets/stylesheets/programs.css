@@ -2,14 +2,12 @@
 	width: 100%;
 	display: table;
 	border: solid 1px;
-	/*border-right: 0px;*/
 	table-layout: fixed;
 	background-color: lightgrey;
 }
 
 .courses-container {
 	display: table-cell;
-	/*border-right: solid 1px;*/
 }
 
 .course-element {

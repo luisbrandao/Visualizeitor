@@ -1,3 +1,8 @@
+//TODO: trocar o nome de course por program_item
+
+// cria classes de controle
+// button-up, button-down, button-info
+
 function drawProgram(program, $container)
 {
   var programItems = program.program_items;
@@ -57,11 +62,9 @@ function insideOfCourseElement(course) {
 };
 
 function insideOfCourseControl(course) {
-  var r = '<div class="button-up" course_id="'+course.id+'"></div><div class="button-down" course_id="'+course.id+'"></div><div class="button-info" course_id="'+course.id+'"></div>';
+  var r = '<div class="button-up" course_id="'+course.id+'"></div><div class="button-down" course_id="'+course.id+'"></div><a href="/courses/'+course.course.id+'" class="button-info" course_id="'+ course.id +'"></a>';
   return r;
 }
-
-
 
 function debug(object)
 {

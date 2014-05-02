@@ -15,6 +15,7 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.json
   def show
+
     respond_to do |format|
         format.html
         format.json { render json: @program, :include => { :program_items => { :include => :course }}}
@@ -49,8 +50,10 @@ class ProgramsController < ApplicationController
   # PATCH/PUT /programs/1
   # PATCH/PUT /programs/1.json
   def update
+
     respond_to do |format|
-      if @program.update(program_params)
+      if @program.update_attributes!(program_params)
+        puts 'to aqui'
         format.html { redirect_to @program, notice: 'Program was successfully updated.' }
         format.json { head :no_content }
       else
@@ -78,6 +81,6 @@ class ProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_params
-      params.require(:program).permit(:name, :code, :year)
+      params.require(:program).permit(:name, :code, :year, :id, :program_items_attributes => [:row, :column, :id])
     end
 end
