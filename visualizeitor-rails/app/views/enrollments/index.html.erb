@@ -36,7 +36,10 @@
     
   <%else%>
   <%end%>
-
+<div class="digg_pagination">
+    <%= will_paginate @enrollments, :container => false %>
+</div>
+</br>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -84,6 +87,11 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="digg_pagination">
+    <%= will_paginate @enrollments, :container => false %>
+</div>
+</br>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_enrollment_path,

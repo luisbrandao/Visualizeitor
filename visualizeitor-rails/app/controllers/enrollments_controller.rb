@@ -5,7 +5,6 @@ class EnrollmentsController < ApplicationController
   # GET /enrollments.json
   def index
     @enrollments = Enrollment.all.order(year: :asc).order(semester: :asc)
-
     if (params[:student_id])
       @student = Student.find(params[:student_id])
       @enrollments = @enrollments.where(student: @student)
@@ -28,8 +27,10 @@ class EnrollmentsController < ApplicationController
           @disapproved_frequency_number = @disapproved_frequency_number + 1
         end
       end
-
     end
+
+    @enrollments = @enrollments.paginate(:page => params[:page], :per_page => 20)
+
   end
 
   def chart
