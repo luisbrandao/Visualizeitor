@@ -15,6 +15,8 @@
 </dl>
 
 <div class="form-actions">
+  <%= link_to('Matrículas', student_enrollments_path(@student), class: 'btn')%>
+
   <%= link_to t('.back', :default => t("helpers.links.back")),
               students_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),

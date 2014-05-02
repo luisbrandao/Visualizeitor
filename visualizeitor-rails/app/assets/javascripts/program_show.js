@@ -6,7 +6,7 @@ var _program;
 $(document).ready(function() {
 
   registerCallBacks();
-
+  controlLoading();
 
 	var programId = $('#program_id').val();
 
@@ -23,6 +23,17 @@ $(document).ready(function() {
       }
     });
 });
+
+function controlLoading() {
+  $(document).ajaxStart(function () {
+    $('#loading').show('slow');
+  });
+
+  $(document).ajaxStop(function () {
+    $('#loading').hide('slow');
+
+  });
+};
 
 function registerCallBacks()
 {
@@ -41,7 +52,6 @@ function registerClickCallbacks(aSelector, callBackFunction)
 function programItemIdForButton(button) {
   return $(button).attr("course_id");
 }
-
 
 function didClickButtonUp(sender)
 {
@@ -75,7 +85,6 @@ function redraw()
   var $container = $('#program-container');
   $container.html('');
   drawProgram(_program, $container);
-  save();
 };
 
 function didClickButtonDown(sender)
@@ -168,7 +177,10 @@ function save()
       type: 'PUT',
       data: json,
       success: function (data) {
-        data
+        $('#did-save-alert').show("slow").delay(1000).hide("slow");
+      },
+      error: function() {
+        $('#did-not-save-alert').show("slow").delay(1000).hide("slow");
       }
     });
 };
@@ -199,3 +211,5 @@ function buildJson(program)
   return json;
 
 };
+
+
