@@ -19,6 +19,12 @@ function loadChart(data)
 		gradeFloat[i] = parseFloat(data.grade_average[i]);
 	}
         $('#container').highcharts({
+            exporting: {
+                enabled: true
+            },
+            credits: {
+                enabled: false
+            },
             chart: {
                 zoomType: 'x'
             },

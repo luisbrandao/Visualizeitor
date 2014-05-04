@@ -25,6 +25,7 @@
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_program_path(program), :class => 'btn' %>
           <%= link_to("Estudantes", program_students_path(program), class:"btn")%>
+          <%= link_to("Ver Disciplinas", program_path(program), class:"btn")%>
         </td>
       </tr>
     <% end %>

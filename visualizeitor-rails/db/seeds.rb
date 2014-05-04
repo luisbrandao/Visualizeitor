@@ -83,17 +83,17 @@ descricao_materias_periodo7 = cria_periodo_com_descricao_materias(
 [
   {code:"CI221", name:"Engenharia de Software"}, 
   {code:"CI211", name:"Construção de Compiladores"},
-  {code:"TGI",  name:"TRABALHO DE GRADUAÇÃO I"},
-  {code:"OPT",  name:"DISCIPLINA OPTATIVA"},
-  {code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 6)
+  {code:"TGI",  name:"Trabalho de Graduação I"},
+  {code:"OPT",  name:"Disciplina Optativa"},
+  {code:"OPT",  name:"Disciplina Optativa"}], 6)
 
 descricao_materias_periodo8 = cria_periodo_com_descricao_materias(
 [
-  {code:"OPT",  name:"DISCIPLINA OPTATIVA"}, 
-  {code:"OPT",  name:"DISCIPLINA OPTATIVA"},
-  {code:"TGII", name:"TRABALHO DE GRADUAÇÃO II"},
-  {code:"OPT",  name:"DISCIPLINA OPTATIVA"},
-  {code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 7)
+  {code:"OPT",  name:"Disciplina Optativa"}, 
+  {code:"OPT",  name:"Disciplina Optativa"},
+  {code:"TGII", name:"Trabalho de Graduação II"},
+  {code:"OPT",  name:"Disciplina Optativa"},
+  {code:"OPT",  name:"Disciplina Optativa"}], 7)
 
 grade_nova.program_items << descricao_materias_periodo1
 grade_nova.program_items << descricao_materias_periodo2
@@ -107,72 +107,72 @@ grade_nova.program_items << descricao_materias_periodo8
 
 p1 = cria_periodo_com_descricao_materias(
 [
-{code:"CI055",  name:"ALGORITMOS E ESTRUTURAS DE DADOS I"},
-{code:"CI063",  name:"MÁQUINAS PROGRAMÁVEIS"},
-{code:"CI066",  name:"OFICINA DE PROGRAMAÇÃO"},
-{code:"CM045",  name:"GEOMETRIA ANALÍTICA I"},
-{code:"CM046",  name:"INTRODUÇÃO À ÁLGEBRA"},
-{code:"CM201",  name:"CÁLCULO DIFERENCIAL E INTEGRAL I"}
+{code:"CI055",  name:"Algoritmos e Estruturas de Dados I"},
+{code:"CI063",  name:"Máquinas Programáveis"},
+{code:"CI066",  name:"Oficina de Programação"},
+{code:"CM045",  name:"Geometria Analítica I"},
+{code:"CM046",  name:"Introdução à Álgebra"},
+{code:"CM201",  name:"Cálculo Diferencial e Integral I"}
   ], 0)
 
 p2 = cria_periodo_com_descricao_materias(
 [
-{code:"CI056",  name:"ALGORITMOS E ESTRUTURAS DE DADOS II"},
-{code:"CI067",  name:"OFICINA DE COMPUTAÇÃO"},
-{code:"CI068",  name:"CIRCUITOS LÓGICOS"},
-{code:"CM005",  name:"ÁLGEBRA LINEAR"},
-{code:"CM202",  name:"CÁLCULO DIFERENCIAL E INTEGRAL II"},
-{code:"CI202",  name:"MÉTODOS NUMÉRICOS"}],1)
+{code:"CI056",  name:"Algoritmos e Estruturas de Dados II"},
+{code:"CI067",  name:"Oficina de Computação"},
+{code:"CI068",  name:"Circuitos Lógicos"},
+{code:"CM005",  name:"Álgebra Linear"},
+{code:"CM202",  name:"Cálculo Diferencial e Integral II"},
+{code:"CI202",  name:"Métodos Numéricos"}],1)
 
 p3 = cria_periodo_com_descricao_materias(
   [
-{code:"CI057",  name:"ALGORITMOS E ESTRUTURAS DE DADOS III"},
-{code:"CI064",  name:"SOFTWARE BÁSICO I"},
-{code:"CI210",  name:"PROJETOS DIGITAIS E MICROPROCESSADORES"},
-{code:"CI237",  name:"MATEMÁTICA DISCRETA"},
-{code:"SA214",  name:"INTRODUÇÃO À TEORIA GERAL DE ADMINISTRAÇÃO"},
-{code:"CE003",  name:"ESTATÍSTICA II"}],2)
+{code:"CI057",  name:"Algoritmos e Estruturas de Dados III"},
+{code:"CI064",  name:"Software Básico I"},
+{code:"CI210",  name:"Projetos Digitais e Microprocessadores"},
+{code:"CI237",  name:"Matemática Discreta"},
+{code:"SA214",  name:"Introdução à Teoria Geral De Administração"},
+{code:"CE003",  name:"Estatística II"}],2)
 
 p4 = cria_periodo_com_descricao_materias(
 [
-{code:"CI059",  name:"INTRODUÇÃO À TEORIA DA COMPUTAÇÃO"},
-{code:"CI060",  name:"SEMINÁRIOS DE INFORMÁTICA I"},
-{code:"CI065",  name:"ALGORITMOS E TEORIA DOS GRAFOS"},
-{code:"CI069",  name:"ADMINISTRAÇÃO DE EMPRESAS DE INFORMÁTICA"},
-{code:"CI212",  name:"ORGANIZAÇÃO E ARQUITETURA DE COMPUTADORES"},
-{code:"CI219",  name:"ANÁLISE E PROJETO DE SISTEMAS"},
-{code:"CM224",  name:"PESQUISA OPERACIONAL I"}],3)
+{code:"CI059",  name:"Introdução à Teoria Da Computação"},
+{code:"CI060",  name:"Seminários De Informática I"},
+{code:"CI065",  name:"Algoritmos e Teoria dos Grafos"},
+{code:"CI069",  name:"Administração de Empresas de Informática"},
+{code:"CI212",  name:"Organização e Arquitetura de Computadores"},
+{code:"CI219",  name:"Análise E Projeto De Sistemas"},
+{code:"CM224",  name:"Pesquisa Operacional I"}],3)
 
 p5 = cria_periodo_com_descricao_materias([
-{code:"CI058",  name:"REDES DE COMPUTADORES I"},
-{code:"CI062",  name:"TECNICAS ALTERNATIVAS DE PROGRAMAÇÃO"},
-{code:"CI211",  name:"CONSTRUÇÃO DE COMPILADORES"},
-{code:"CI215",  name:"SISTEMAS OPERACIONAIS"},
-{code:"CI235",  name:"ESTÁGIO SUPERVISIONADO I"},
-{code:"SIN070",  name:"ORIENTAÇÃO BIBLIOGRÁFICA - B"},
-{code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 4)
+{code:"CI058",  name:"Redes de Computadores I"},
+{code:"CI062",  name:"Tecnicas Alternativas De Programação"},
+{code:"CI211",  name:"Construção de Compiladores"},
+{code:"CI215",  name:"Sistemas Operacionais"},
+{code:"CI235",  name:"Estágio Supervisionado I"},
+{code:"SIN070",  name:"Orientação Bibliográfica - B"},
+{code:"OPT",  name:"Disciplina Optativa"}], 4)
 
 p6 = cria_periodo_com_descricao_materias([
-{code:"CI061",  name:"REDES DE COMPUTADORES II"},
-{code:"CI214",  name:"ESTRUTURAS DE LINGUAGENS DE PROGRAMAÇÃO"},
-{code:"CI218",  name:"SISTEMAS DE BANCO DE DADOS"},
-{code:"CI236",  name:"ESTÁGIO SUPERVISIONADO II"},
-{code:"OPT",  name:"DISCIPLINA OPTATIVA"},
-{code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 5)
+{code:"CI061",  name:"Redes de Computadores II"},
+{code:"CI214",  name:"Estruturas de Linguagens de Programação"},
+{code:"CI218",  name:"Sistemas de Banco de Dados"},
+{code:"CI236",  name:"Estágio Supervisionado II"},
+{code:"OPT",  name:"Disciplina Optativa"},
+{code:"OPT",  name:"Disciplina Optativa"}], 5)
 
 p7 = cria_periodo_com_descricao_materias([
-{code:"CI220",  name:"TEORIA DE SISTEMAS"},
-{code:"CI221",  name:"ENGENHARIA DE SOFTWARE"},
-{code:"TGI",  name:"TRABALHO DE GRADUAÇÃO I"},
-{code:"OPT",  name:"DISCIPLINA OPTATIVA"},
-{code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 6)
+{code:"CI220",  name:"Teoria de Sistemas"},
+{code:"CI221",  name:"Engenharia de Software"},
+{code:"TGI",  name:"Trabalho de Graduação I"},
+{code:"OPT",  name:"Disciplina Optativa"},
+{code:"OPT",  name:"Disciplina Optativa"}], 6)
 
 p8 = cria_periodo_com_descricao_materias([
-{code:"TGII",  name:"TRABALHO DE GRADUAÇÃO II"},
-{code:"OPT",  name:"DISCIPLINA OPTATIVA"},
-{code:"OPT",  name:"DISCIPLINA OPTATIVA"},
-{code:"OPT",  name:"DISCIPLINA OPTATIVA"},
-{code:"OPT",  name:"DISCIPLINA OPTATIVA"}], 7)
+{code:"TGII",  name:"Trabalho de Graduação II"},
+{code:"OPT",  name:"Disciplina Optativa"},
+{code:"OPT",  name:"Disciplina Optativa"},
+{code:"OPT",  name:"Disciplina Optativa"},
+{code:"OPT",  name:"Disciplina Optativa"}], 7)
 
 grade_antiga.program_items << p1
 grade_antiga.program_items << p2
