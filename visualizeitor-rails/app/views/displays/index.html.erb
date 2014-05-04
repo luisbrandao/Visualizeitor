@@ -7,28 +7,60 @@
 <div style="clear:both"></div>
 
 
+<span class="tooltip" id="tooltip">
+	<span class="tooltip-triangle"></span>
+	<table class="tooltipTable">
+		<tr class="tooltipTableStatus"><td id="tooltipStatus"colspan="3">Aprovado</td></tr>
+		<tr class="tooltipTableTitle"><td>Nota</td><td>Frequência</td><td>Período</td></tr>
+		<tr class="tooltipTableRow">
+			<td id="tooltipFreq"></td>
+			<td id="tooltipYear"></td>
+		</tr>			
+	</table>	
+</span>
+<span class="tooltip" id="tooltip2">text</span>
 
-	<spam class="tooltip" id="tooltip">
-		<spam class="tooltip-triangle"></spam>
-		<table class="tooltipTable">
-			<tr class="tooltipTableStatus"><td id="tooltipStatus"colspan="3">Aprovado</td></tr>
-			<tr class="tooltipTableTitle"><td>Nota</td><td>Frequencia</td><td>Semestre</td></tr>
-			<tr class="tooltipTableRow">
-				<td id="tooltipGrade"></td>
-				<td id="tooltipFreq"></td>
-				<td id="tooltipYear"></td>
+<div class="info container" id="studentInfo">
+	<div id="studentName"></div>
+	<div id="studentGrr"></div>
+
+</div>
+<div class="container"><div id="programName" align="center"></div></div>
+
+<div class="grid container" id="gridContainer" oncontextmenu="return false;"></div>
+<div class="courseInfo container" id="courseInfo">
+	<div><div id="infoCourseName"></div></div>
+	<div id="courseStatus">
+		<table class="infoTable" id="infoTable">
+			<tr class="infoTableTitle"><td id="infoCourseName"> </td></tr>
+			<tr class="infoTableTitle"><td>Período</td><td>Nota</td><td>Frequência</td><td>Situação</td></tr>
+			<tr class="infoTableRow" id="infoTableRow">
+				<td id="lastSemester"></td>
+				<td id="lastGrade"></td>
+				<td id="lastFreq"></td>
+				<td id="lastStatus"></td>
 			</tr>			
 		</table>	
-	</spam>
-	<spam  class="tooltip" id="tooltip2">text</spam>
-
-	<div class="grid" id="gridContainer" oncontextmenu="return false;">
-		
 	</div>
+</div>
+<div class="courseInfo container" id="courseOldInfo">
+	<div id="courseStatus">
+		Situações anteriores
+		<table class="infoTable" id="oldInfoTable">
+		</table>	
+	</div>
+</div>
+<div class="courseInfo container" id="courseOptInfo">
+	<div id="optCourseStatus">
+		Optativas
+		<table class="infoTable" id="optInfoTable">
+		</table>	
+	</div>
+</div>
 
 <br/>
 <br/>
 <br/>
 
-<textarea style="width: 100%" id="student-result"></textarea>
-<textarea style="width: 100%" id="program-result"></textarea>
+<textarea style="width: 100%; display: none" id="student-result"></textarea>
+<textarea style="width: 100%; display: none" id="program-result"></textarea>

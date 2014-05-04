@@ -2,21 +2,46 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-
 body {
 	margin: 0px;
 }
 
-.grid {
-	width: 100%;
-	max-width: 1000px;
-	min-width: 755px;
-	margin: 0 auto;
-	overflow: hidden;
-	background-color: black;
+
+.info{
+
 
 }
+
+.container{
+	width: 100%;
+	max-width: 1000px;
+	min-width: 1100px;
+	margin: auto;
+	padding: 5px;
+	overflow: hidden;
+	background-color: white;
+	outline-width: 1px;
+	outline-color: lightgrey;
+	outline-style: solid;
+	box-shadow: 0px 2px 5px -2px black;
+	margin-bottom: 5px;
+	color: black;
+	
+}
+
+.grid {
+	background-color: #eeeeee;
+}
+
+/*
+grid:after, grid:before{
+
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	
+}
+*/
 
 .gridCell {
 	width: 100%;
@@ -24,38 +49,13 @@ body {
 	margin-bottom: 2%;
 	overflow: hidden;
 
+
 }
-
-
-/*
-
-	border-width: 3px;
-	border-style: solid;
-	border-color: yellow;
-.gridContent:hover:after{
-	padding: 5px 15px;
-    width: 220px;
-    border-radius: 5px;
-    background: #333;
-    content: 'blabla';    
-    left: 20%;
-    color: #fff; 
-}
-
-
-.gridContent:hover:before{
-    border: solid;
-    border-color: #333 transparent;
-    border-width: 6px 6px 0px 6px;
-    content: "";
-    position: absolute;
-}
-*/
 
 .gridCol {
 	float: left;
 	width: 12%;
-	background-color: black;
+
 	margin: 0.25%;
 
 }
@@ -66,18 +66,35 @@ body {
 }
 
 .gridContent{
-	width: 100%;
-	height: 100%;
+	width: 90%;
+	height: 80%;
 	overflow: hidden;
 	padding: 5px;
 	cursor: default;
-	line-height: 75%;
+	line-height: 90%;
+	text-align: center;
+	outline-color: lightgrey;
+	outline-width: 1px;
+	outline-style: solid;
 	color: black;
 }
 
+
+
 .gridCourseName{
 	font-size: 12px;
+	max-width: 95%;
+
 }
+
+.gridCourseName{
+
+}
+
+.gridCourseCode{
+
+}
+
 
 .gridColTitle{
 	height: 30px;
@@ -92,24 +109,35 @@ body {
 }
 
 .statusFailed{
-	background-color: red;
+	background-color: #CF676F;
+}
+
+.statusFailed2{
+	background-color: #C2414A;
 }
 
 .statusCanceled{
-	background-color: pink;
+	background-color: lightgrey;
 }
 
 .statusApproved{
-	background-color: green;
+	background-color: #7499E0;
 }
 
 .statusExempt{
-	background-color: darkgreen;
+	background-color: #257BDA;
 }
 
 .statusSuspended{
-	background-color: lightgreen;
+	background-color: darkgrey;
+
 }
+
+.statusEnrolled{
+	background-color: #E9C964;
+}
+
+
 
 .tooltip{
 	background-color: white;
@@ -120,24 +148,14 @@ body {
 	border-color: black;
 	position: absolute;
 	display: none;
-
-
 }
 
 .tooltip:before{
-
 	border-top: 13px solid transparent;
 	border-right: 26px solid red;
 	border-bottom: 13px solid transparent;
-		width: 0;
+	width: 0;
 	height: 0;
-}
-
-.darkgrid{
-	width: 100%;
-	height: 100%;
-	background-color: black;
-	position: absolute;
 }
 
 .tooltip-triangle {
@@ -168,4 +186,45 @@ body {
 
 }
 
+.courseInfo{
+	display: none;
+}
 
+
+.infoTable{
+	width: 100%;
+	border-collapse: collapse;
+	margin: 0;
+	padding: 0;
+}
+
+.infoTableRow{
+}
+
+[data-assigned = 'true']{
+		cursor: pointer;
+}
+
+[data-assigned = 'true']:hover{
+	box-shadow: 1px 1px 4px 0px black;
+}
+
+
+[data-selected = 'true']{
+	outline-color: #888888;
+	outline-width: 5px;
+	outline-style: solid;
+}
+
+.infoTable{
+	max-height: 100px;
+	overflow: scroll;	
+
+}
+
+.infoTableTitle{
+	color: grey;
+	background-color:#eeeeee;
+
+
+}
