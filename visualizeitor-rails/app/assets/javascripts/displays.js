@@ -144,6 +144,8 @@ function setGridStatus(){
   var enrollments = studentJson.enrollments;
   var arrayOpt = [];
 
+  document.getElementById('optCells').innerHTML = "";
+
   document.getElementById('studentName').innerHTML = studentJson.name;
   document.getElementById('studentGrr').innerHTML = studentJson.grr;
   document.getElementById('programName').innerHTML = programJson.name;
@@ -293,6 +295,7 @@ function getStatusClass(status){
     case 'Equivalência de Disciplina':
     return 'statusApproved';
     break;
+    default: 'statusSuspended';
   }
 }
 
