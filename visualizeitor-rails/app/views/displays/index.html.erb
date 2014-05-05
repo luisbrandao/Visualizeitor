@@ -5,17 +5,6 @@
 <div style="clear:both"></div>
 
 
-<span class="tooltip" id="tooltip">
-	<span class="tooltip-triangle"></span>
-	<table class="tooltipTable">
-		<tr class="tooltipTableStatus"><td id="tooltipStatus"colspan="3">Aprovado</td></tr>
-		<tr class="tooltipTableTitle"><td>Nota</td><td>Frequência</td><td>Período</td></tr>
-		<tr class="tooltipTableRow">
-			<td id="tooltipFreq"></td>
-			<td id="tooltipYear"></td>
-		</tr>			
-	</table>	
-</span>
 <span class="tooltip" id="tooltip2">text</span>
 
 <div class="info container" id="search-container">
@@ -24,47 +13,44 @@
 <span class='btn' id="buttonSearchGRR">Buscar</span>
 </div>
 
-<div class="info container" id="studentInfo">
-	<div id="studentName"></div>
-	<div id="studentGrr"></div>
 
-</div>
-<div class="container"><div id="programName" align="center"></div></div>
-
-<div class="grid container" id="gridContainer" oncontextmenu="return false;"></div>
-<div class="courseInfo container" id="courseInfo">
-	<div><div id="infoCourseName"></div></div>
-	<div id="courseStatus">
-		<table class="infoTable" id="infoTable">
-			<tr class="infoTableTitle"><td id="infoCourseName"> </td></tr>
-			<tr class="infoTableTitle"><td>Período</td><td>Nota</td><td>Frequência</td><td>Situação</td></tr>
-			<tr class="infoTableRow" id="infoTableRow">
-				<td id="lastSemester"></td>
-				<td id="lastGrade"></td>
-				<td id="lastFreq"></td>
-				<td id="lastStatus"></td>
-			</tr>			
-		</table>	
+	<div class="info container" id="studentInfo">
+		<div id="studentName"></div>
+		<div id="studentGrr"></div>
 	</div>
-</div>
-<div class="courseInfo container" id="courseOldInfo">
-	<div id="courseStatus">
-		Situações anteriores
-		<table class="infoTable" id="oldInfoTable">
-		</table>	
-	</div>
-</div>
-<div class="courseInfo container" id="courseOptInfo">
-	<div id="optCourseStatus">
-		Optativas
-		<table class="infoTable" id="optInfoTable">
-		</table>	
-	</div>
-</div>
+    <div class="container"><div id="programName" align="center"></div></div>
 
-<br/>
-<br/>
-<br/>
+	<div class="grid container" id="gridContainer"></div>
 
-<textarea style="width: 100%; display: none" id="student-result"></textarea>
-<textarea style="width: 100%; display: none" id="program-result"></textarea>
+	<div class="grid container" id="optContainer" style="display:none" >
+		<div class="gridColTitle">Optativas</div>
+		<div class="optCells" id="optCells"></div>
+
+	</div>
+
+	<div class="courseInfo container" id="courseInfo">
+		<div><div id="infoCourseName"></div><div id="infoCourseType"></div></div>
+		<div id="courseStatus">
+			<table class="infoTable" id="infoTable">
+				<tr class="infoTableTitle"><td id="infoCourseName"></td></tr>
+				<tr class="infoTableTitle"><td>Período</td><td>Nota</td><td>Frequência</td><td>Situação</td></tr>
+				<tr class="infoTableRow" id="infoTableRow">
+					<td id="lastSemester"></td>
+					<td id="lastGrade"></td>
+					<td id="lastFreq"></td>
+					<td id="lastStatus"></td>
+				</tr>			
+			</table>	
+		</div>
+	</div>
+
+	<div class="courseInfo container" id="courseOldInfo">
+		<div id="courseStatus">
+				<td id="infoTableTitle">Situações anteriores</td>
+				<table class="infoTable" id="oldInfoTable">
+				</table>	
+		</div>
+	</div>
+
+<textarea style="width: 100%; display:none" id="student-result"></textarea>
+<textarea style="width: 100%; display:none" id="program-result"></textarea>

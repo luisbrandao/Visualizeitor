@@ -7,15 +7,10 @@ body {
 }
 
 
-.info{
-
-
-}
-
 .container{
 	width: 100%;
 	max-width: 1000px;
-	min-width: 1100px;
+	min-width: 755px;
 	margin: auto;
 	padding: 5px;
 	overflow: hidden;
@@ -26,37 +21,36 @@ body {
 	box-shadow: 0px 2px 5px -2px black;
 	margin-bottom: 5px;
 	color: black;
-	
 }
 
 .grid {
 	background-color: #eeeeee;
 }
 
-/*
-grid:after, grid:before{
+.info{
+}
+
+
+/*grid:after, grid:before{
 
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 	
-}
-*/
+}*/
+
 
 .gridCell {
 	width: 100%;
 	height: 60px;
 	margin-bottom: 2%;
-	overflow: hidden;
-
-
+	overflow: visible;
 }
 
 .gridCol {
 	float: left;
-	width: 12%;
-
 	margin: 0.25%;
+	overflow: visible;
 
 }
 
@@ -69,35 +63,24 @@ grid:after, grid:before{
 	width: 90%;
 	height: 80%;
 	overflow: hidden;
+	margin: auto;
 	padding: 5px;
 	cursor: default;
-	line-height: 90%;
+	line-height: 75%;
 	text-align: center;
 	outline-color: lightgrey;
 	outline-width: 1px;
 	outline-style: solid;
-	color: black;
 }
-
-
 
 .gridCourseName{
 	font-size: 12px;
 	max-width: 95%;
-
 }
-
-.gridCourseName{
-
-}
-
-.gridCourseCode{
-
-}
-
 
 .gridColTitle{
-	height: 30px;
+	width: 100%;
+	height: 20px;
 	text-align: center;
 	background-color: #333333;
 	color: lightgrey;
@@ -130,66 +113,16 @@ grid:after, grid:before{
 
 .statusSuspended{
 	background-color: darkgrey;
-
 }
 
 .statusEnrolled{
 	background-color: #E9C964;
 }
 
-
-
-.tooltip{
-	background-color: white;
-	height: 40px;
-	width: 150px;
-	border-width: 1px;
-	border-style: solid;
-	border-color: black;
-	position: absolute;
-	display: none;
-}
-
-.tooltip:before{
-	border-top: 13px solid transparent;
-	border-right: 26px solid red;
-	border-bottom: 13px solid transparent;
-	width: 0;
-	height: 0;
-}
-
-.tooltip-triangle {
-	width: 0;
-	height: 0;
-	margin-top: -10px;
-	position: absolute;
-	left: 20px;
-	border-left: 10px solid transparent;
-	border-right: 10px solid transparent;
-	border-bottom: 11px solid white;
-}
-
-.tooltipTable{
-	font-size: 12px;
-	width: 100%;
-	line-height: 75%;
-	text-align: center;
-}
-
-.tooltipTableTitle{
-	color: grey;
-
-}
-
-.tooltipTableStatus{
-	font-weight: bolder;
-
-}
-
 .courseInfo{
 	display: none;
+	text-align: center;
 }
-
 
 .infoTable{
 	width: 100%;
@@ -206,34 +139,44 @@ grid:after, grid:before{
 }
 
 [data-assigned = 'true']:hover{
-	box-shadow: 1px 1px 4px 0px black;
+	box-shadow: 1px 1px 4px 2px black;
 }
-
 
 [data-selected = 'true']{
 	outline-color: #888888;
-	outline-width: 5px;
-	outline-style: solid;
+	outline-width: 3px;
+	outline-style: ridge;
 }
 
 .infoTable{
 	max-height: 100px;
-	overflow: scroll;	
-
+	overflow: scroll;
 }
 
 .infoTableTitle{
 	color: grey;
 	background-color:#eeeeee;
-
-
 }
 
-.container.info#search-container {
-	outline-width: 0px;
-	outline-color: lightgrey;
-	outline-style: solid;
-	box-shadow: 0px 0px 0px 0px black;
-	margin-bottom: 5px;
-	color: black;
+.opttag{
+	font-weight: normal;
+	font-style: italic;
+}
+
+.optleft{
+	margin: 5px;
+	float:left;	
+}
+
+.optCells{
+	width: 100%;
+	float: left;
+}
+
+#infoCourseName{
+	text-align: center;
+	font-weight: bolder;
+}
+#infoCourseType{
+	font-style: italic;
 }
