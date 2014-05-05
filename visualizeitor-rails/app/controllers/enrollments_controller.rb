@@ -61,7 +61,7 @@ class EnrollmentsController < ApplicationController
 
     hash_enrollments.sort.map do |year, semester|
       semester.sort.map do |number, enrollments|
-        puts "semestre: #{number} matriculas: #{enrollments}"
+        puts "semestre: #{number} Matrículas: #{enrollments}"
         json_wrapper[:years].push("#{year}/#{number}")
         approved = 0
         disapproved_grade_number = 0

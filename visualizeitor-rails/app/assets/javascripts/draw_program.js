@@ -21,7 +21,8 @@ function createCoursesContainers(numberOfPeriods, $container) {
   var coursesContainer;
   $container.html('');
   for (i = 0; i < numberOfPeriods; i++) {
-    coursesContainer = '<div class="courses-container" id="courses-container-' + i +'"></div>';
+    var period = i + 1;
+    coursesContainer = '<div class="courses-container" id="courses-container-' + i +'"><div class="period-container">'+period+'</div></div>';
     $container.append(coursesContainer);
   }
 };
@@ -62,7 +63,12 @@ function insideOfCourseElement(course) {
 };
 
 function insideOfCourseControl(course) {
-  var r = '<div class="button-up" course_id="'+course.id+'"></div><div class="button-down" course_id="'+course.id+'"></div><a href="/courses/'+course.course.id+'" class="button-info" course_id="'+ course.id +'"></a>';
+  if (course.course.code === 'OPT' || course.course.code === 'TGI' || course.course.code === 'TGII') {
+    var r = '<div class="button-up" course_id="'+course.id+'"></div><div class="button-down" course_id="'+course.id+'"></div>';
+  } else {
+    var r = '<div class="button-up" course_id="'+course.id+'"></div><div class="button-down" course_id="'+course.id+'"></div><a href="/courses/'+course.course.id+'/enrollments" class="button-info" course_id="'+ course.id +'"></a>';
+  }
+
   return r;
 }
 

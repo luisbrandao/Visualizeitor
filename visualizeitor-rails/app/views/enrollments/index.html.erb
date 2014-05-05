@@ -13,9 +13,9 @@
 <%- model_class = Enrollment -%>
 <div class="page-header">
   <%if (@course)%>
-    <h1><%=link_to(@course.name, course_path(@course))%> > Matriculas</h1>
+    <h1><%=link_to(@course.name, course_path(@course))%> > Matrículas</h1>
   <%elsif (@student)%>
-    <h1><%=link_to(@student.name, student_path(@student))%> > Matriculas</h1>
+    <h1><%=link_to(@student.name, student_path(@student))%> > Matrículas</h1>
   <%else%>
     <h1>Matrículas</h1>
   <%end%>
@@ -37,7 +37,7 @@
   <%else%>
   <%end%>
 <div class="digg_pagination">
-    <%= will_paginate @enrollments, :container => false %>
+  <%= will_paginate @enrollments, :container => false, :previous_label => 'Anterior', :next_label => 'Próxima' %>
 </div>
 </br>
 <table class="table table-striped">
@@ -89,7 +89,7 @@
 </table>
 
 <div class="digg_pagination">
-    <%= will_paginate @enrollments, :container => false %>
+    <%= will_paginate @enrollments, :container => false, :previous_label => 'Anterior', :next_label => 'Próxima' %>
 </div>
 </br>
 

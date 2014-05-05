@@ -58,12 +58,23 @@
       </div>
     </div>
 
+<%if (params[:controller].eql? 'displays')%>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+      <%= yield %>
+          <%= bootstrap_flash %>
+
+        </div>
+      </div><!--/row-->
+    </div> <!-- /container -->
+<%else%>
     <div class="container-fluid">
       <div class="row-fluid">
         <div class="span1">
         </div><!--/span-->
         <div class="span10">
- 			<%= yield %>
+      <%= yield %>
           <%= bootstrap_flash %>
 
         </div>
@@ -73,6 +84,7 @@
 
 
     </div> <!-- /container -->
+<%end%>
 
   </body>
 </html>

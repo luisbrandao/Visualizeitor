@@ -77,7 +77,9 @@ class StudentsController < ApplicationController
     if (params[:GRR].nil? && params[:GRR].empty?)
       # TODO: validação
     end
+
     @student = Student.find_by_grr(params[:GRR])
+
     respond_to do |format|
         format.json { render json: @student, :include => { :enrollments => { :include => :course }}}
     end
