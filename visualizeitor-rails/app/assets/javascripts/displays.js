@@ -3,8 +3,7 @@ var programJson;
 
 jQuery(document).ready(function($) {
   registerCallbacks();
-
-
+  didClickButtonSearchGRR();
 });
 
 function registerCallbacks()
@@ -35,8 +34,7 @@ function didClickButtonSearchGRR()
       data: {GRR: enteredGRR},
       success: function (data) {
         studentJson = data;
-        didDownloadStudent(data); 
-        getChartData();       
+        didDownloadStudent(data);      
       }
     });
 
@@ -126,20 +124,22 @@ function drawGrid(){
       text =  '<div class="gridContent statusDefault"  id=gridContent-' +itemId+' data-courseid= '+courseId+' data-assigned = "false">';
     }
 
-    text += '<div class="gridCourseCode">'+ courseCode +'</div>'
+    text += '<div class="gridCourseCode">'+ courseCode +'<span class="enrollCount"></span></div>'
         + '<div class="gridCourseName">'+ courseName +'</div>'
         + '</div>';
 
     selectedCell.innerHTML += text;
   }
   
-  cellWidth = 100/(colCount+1) - 0.5;
+  //cellWidth = 100/(colCount+1) - 0.5;
 
-  cellWidth = cellWidth+"%"
-  $('.gridCol').css({"width": cellWidth });
+  //cellWidth = cellWidth+"%"
+  //$('.gridCol').css({"width": cellWidth });
 
   setGridStatus();
+  getChartData();
   registerCallbacks();
+
 }
 
 
@@ -152,7 +152,7 @@ function setGridStatus(){
 
   document.getElementById('studentName').innerHTML = studentJson.name;
   document.getElementById('studentGrr').innerHTML = studentJson.grr;
-  document.getElementById('programName').innerHTML = programJson.name;
+  //document.getElementById('programName').innerHTML = programJson.name;
 
   for (i in enrollments){
     if ($('[data-courseid = "'+enrollments[i].course_id+'"]').length > 0){  
@@ -217,7 +217,7 @@ function setOptStatus(enrollments){
   }
   i = 0;
   for (i in enrollments){
-    text =  '<div class="gridCourseCode">'+ enrollments[i].course.code+' <span class="opttag">*</span> </div>'
+    text =  '<div class="gridCourseCode">'+ enrollments[i].course.code+' <span class="opttag">*</span><span class="enrollCount"></span></div>'
           + '<div class="gridCourseName">'+ enrollments[i].course.name +'</div>';
 
     if ($('[data-courseid = "'+enrollments[i].course_id+'"]').length > 0)
@@ -258,10 +258,13 @@ function setOptStatus(enrollments){
 }
 
 function applyEnrollment(contentId, enrollment){
-
   $('#'+contentId).attr('data-assigned', "true");
   $('#'+contentId).attr('class', 'gridContent '+getStatusClass(enrollment.status));
   $('#'+contentId).attr('data-courseid', enrollment.course_id);
+
+  count = countEnrollments(enrollment.course_id);
+  if(count > 1)
+    $('#'+contentId+'> .gridCourseCode > .enrollCount').html(count).show();
   //$('#'+contentId).attr('data-status', enrollment.status);
   //$('#'+contentId).attr('data-enrollment_id', enrollment.id);
   //$('#'+contentId).attr('data-semester', enrollment.semester);
@@ -269,8 +272,16 @@ function applyEnrollment(contentId, enrollment){
   //$('#'+contentId).attr('data-frequency', enrollment.frequency);    
   //$('#'+contentId).attr('data-grade', enrollment.grade);
   //$('#'+contentId).attr('data-enrollment_id', enrollment.id);
-
 }
+
+function countEnrollments(courseId){
+  var count = 0;
+  for(i in studentJson.enrollments)
+    if(studentJson.enrollments[i].course_id == courseId)
+      count++;
+  return count;
+}
+
 
 function getStatusClass(status){
 
@@ -323,7 +334,7 @@ function updateCourseInfo (contentId){
         enrollments.push(studentJson.enrollments[i]);
     
     document.getElementById('infoCourseName').innerHTML = enrollments[enrollments.length-1].course.code + ' - ' + enrollments[enrollments.length-1].course.name;
-    document.getElementById('lastSemester').innerHTML = enrollments[enrollments.length-1].year +' / '+enrollments[enrollments.length-1].semester;
+    document.getElementById('lastSemester').innerHTML = enrollments[enrollments.length-1].year +'/'+enrollments[enrollments.length-1].semester;
     document.getElementById('lastGrade').innerHTML = enrollments[enrollments.length-1].grade;
     document.getElementById('lastFreq').innerHTML = enrollments[enrollments.length-1].frequency;
     document.getElementById('lastStatus').innerHTML = enrollments[enrollments.length-1].status;
@@ -334,10 +345,16 @@ function updateCourseInfo (contentId){
     if (enrollments.length > 1){
       $('#courseOldInfo').css({"display": "block" })  
 
-      text = '<tr class="infoTableTitle"><td id="infoCourseName"> </td></tr> <tr class="infoTableTitle"><td>Período</td><td>Nota</td><td>Frequência</td><td>Situação</td></tr>';
+      text = '<tr class="infoTableTitle">'+
+      '<td id="infoCourseName"> </td></tr>'+
+      '<tr class="infoTableTitle">'+
+      '<td class="cellSemester">Período</td>'+
+      '<td class="cellGrade">Nota</td>'+
+      '<td class="cellFreq">Freq.</td>'+
+      '<td class="cellStatus">Situação</td></tr>';
       for (var i = enrollments.length - 2; i >= 0; i--) {
         text += '<tr class="infoTableRow '+ getStatusClass(enrollments[i].status) +'">'+
-        '<td>'+ enrollments[i].year +' / '+enrollments[i].semester +'</td>' +
+        '<td>'+ enrollments[i].year +'/'+enrollments[i].semester +'</td>' +
         '<td>'+ enrollments[i].grade +'</td>' +
         '<td>'+ enrollments[i].frequency +'</td>' +
         '<td>'+ enrollments[i].status +'</td>' +
@@ -373,14 +390,32 @@ function loadChart(data)
     gradeFloat[i] = parseFloat(data.grade_average[i]);
   }
         $('#chartContainer').highcharts({
+            lang:{
+                  printChart: "Imprimir Gráfico",
+                  downloadPNG:"Baixar como imagem PNG",
+                  downloadJPEG:"Baixar como imagem JPEG",
+                  downloadPDF:"Baixar como documento PDF",
+                  downloadSVG:"Baixar como imagem SVG",
+                  contextButtonTitle:"Chart context menu"
+            },
             exporting: {
-                enabled: true
+                enabled: true,
+
+            },
+            plotOptions: {
+              series: {
+                animation: false
+              }
             },
             credits: {
                 enabled: false
             },
             chart: {
-                zoomType: 'x'
+                zoomType: 'x',
+                style:{
+                  fontFamily: 'Lato'              
+                 
+                }
             },
             title: {
                 text: 'Notas e Quantidade de Disciplinas por Semestre'
@@ -445,21 +480,22 @@ function loadChart(data)
 
             }]
         });
+
 }
 
 function tabChange(tabId){
 
+  $('#chartContainer').hide();
   $('.tabSelector').removeClass('selectedTab');
   $('#'+tabId).addClass('selectedTab');
 
-  if(tabId == "tabGrid"){
-    $('#chartTab').hide();
-    $('#gridTab').show();
-  }
-  else if (tabId == "tabChart"){
-    $('#chartTab').show();
-    $('#gridTab').hide();
-  }
+  $('.tabContent').hide();
 
+  $('#'+tabId+'Content').show();
+
+  if (tabId == 'chartTab'){
+    getChartData()
+    $('#chartContainer').show();
+  }
 
 }

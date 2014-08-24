@@ -1,9 +1,10 @@
 <%= javascript_include_tag 'displays.js' %>
 <%= javascript_include_tag 'highcharts.js' %>
+<%= javascript_include_tag 'highcharts_exporting.js' %>
 
 <div style="clear:both"></div>
 
-<span class="tooltip" id="tooltip2">text</span>
+<span class="tooltip" id="tooltip">text</span>
 
 <div class="info container" id="search-container">
 	<input id="GRR" type="text" value="GRR00000007"></input>
@@ -15,51 +16,71 @@
 	<div id="studentName"></div>
 	<div id="studentGrr"></div>
 </div>
-<div class="container"><div id="programName" align="center"></div></div>
 
 <div class="container" id="mainContainer">
 	<div class="tabSelectors">
-		<div class="tabSelector selectedTab" id="tabGrid">Grade</div>
-		<div class="tabSelector" id="tabChart">Gráfico</div>
+		<div class="tabSelector selectedTab" id="gridTab">Grade</div>
+		<!--<div class="tabSelector" id="listTab">Lista</div>-->
+		<div class="tabSelector" id="chartTab">Gráfico</div>
+		<!--<div class="tabSelector" id="textTab">Observações (WIP)</div>-->
 	</div>
-	<div class="tabContent" id="gridTab">
-		<div class="grid" id="gridContainer"></div>
-		<div class="grid container" id="optContainer" style="display:none" >
-			<div class="gridColTitle">Outras Matrículas</div>
-			<div class="optCells" id="optCells"></div>
-		</div>
-
-		<div class="courseInfo container" id="courseInfo">
-			<div><div id="infoCourseName"></div><div id="infoCourseType"></div></div>
-			<div id="courseStatus">
-				<table class="infoTable" id="infoTable">
-					<tr class="infoTableTitle"><td id="infoCourseName"></td></tr>
-					<tr class="infoTableTitle"><td>Período</td><td>Nota</td><td>Frequência</td><td>Situação</td></tr>
-					<tr class="infoTableRow" id="infoTableRow">
-						<td id="lastSemester"></td>
-						<td id="lastGrade"></td>
-						<td id="lastFreq"></td>
-						<td id="lastStatus"></td>
-					</tr>			
-				</table>	
+	<div class="tabContent" id="gridTabContent">
+		<div class="grids">
+			<div class="grid" id="gridContainer"></div>
+			<div class="grid" id="optContainer" style="display:none" >
+				<div class="gridColTitle">Outras Matrículas</div>
+				<div class="optCells" id="optCells"></div>
 			</div>
 		</div>
-
-		<div class="courseInfo container" id="courseOldInfo">
-			<div id="courseStatus">
-				<td id="infoTableTitle">Situações anteriores</td>
-				<table class="infoTable" id="oldInfoTable">
-				</table>	
+		<div class="courseDetails">
+			<div class="courseInfo" id="courseInfo">
+				<div>
+					<div id="infoCourseName"></div>
+					<div id="infoCourseType"></div>
+				</div>
+				<div id="courseStatus">
+					<table class="infoTable" id="infoTable">
+						<tr class="infoTableTitle">
+							<td id="infoCourseName"></td>
+						</tr>
+						<tr class="infoTableTitle">
+							<td class="cellSemester">Período</td>
+							<td class="cellGrade">Nota</td>
+							<td class="cellFreq">Freq.</td>
+							<td class="cellStatus">Situação</td>
+						</tr>
+						<tr class="infoTableRow" id="infoTableRow">
+							<td id="lastSemester"></td>
+							<td id="lastGrade"></td>
+							<td id="lastFreq"></td>
+							<td id="lastStatus"></td>
+						</tr>			
+					</table>	
+				</div>
+				<br/>
+				<div id="infoTableTitle">Situações anteriores</div>
+				<div id="courseStatus" class="courseOldInfo">
+					<table class="infoTable" id="oldInfoTable">
+					</table>	
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="tabContent" id="chartTab" style="display:none"> 
+
+	<div class="tabContent" id="chartTabContent" style="display:none"> 
 		<div id="chartContainer"></div>
 	</div>
+	
+	<!--
+	<div class="tabContent" id="listTabContent" style="display:none"> 
+		<div id="listContainer"></div>
+	</div>-->
+	<!--
+	<div class="tabContent" id="textTabContent" style="display:none"> 
+		<div id="textContainer"></div>
+	</div> -->
 </div>
 
 
-
-
-<textarea style="width: 100%; display:none" id="student-result"></textarea>
-<textarea style="width: 100%; display:none" id="program-result"></textarea>
+	<textarea style="width: 100%; display:none" id="student-result"></textarea>
+	<textarea style="width: 100%; display:none" id="program-result"></textarea>

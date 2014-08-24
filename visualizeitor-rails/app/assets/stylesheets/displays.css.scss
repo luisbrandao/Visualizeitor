@@ -7,13 +7,11 @@ body {
 }
 
 .container{
-	width: 100%;
-	max-width: 1280px;
-	min-width: 800px;
+	max-width: 1140px;
+	min-width: 1140px;
 	margin: auto;
 	padding: 5px;
-	overflow: hidden;
-	background-color: white;
+	overflow: visible;
 	border-width: 1px;
 	border-color: lightgrey;
 	border-style: solid;
@@ -22,59 +20,40 @@ body {
 	-moz-box-shadow: 0px 2px 5px -2px black;
 	margin-bottom: 5px;
 	color: black;
+
 }
 
 .grid {
-	background-color: #eeeeee;
+	width: 100%;
 	float: left;
-	border-width: 1px;
 	padding: 5px;
-	border-width: 1px;
-	border-color: lightgrey;
-	border-style: solid;
-}
-
-.info{
-}
-
-grid:after, grid:before{
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
 }
 
 .gridCell {
 	width: 100%;
-	height: 60px;
-	margin-bottom: 4%;
-	overflow: visible;
+	height: 65px;
 }
 
 .gridCol {
 	float: left;
-	margin: 0.25%;
-	overflow: visible;
-
+	width: 12.5%;
 }
 
 .gridCourseCode {
 	font-weight: bolder;
 	padding-bottom: 3px;
-
 }
 
 .gridContent{
-	width: 90%;
-	height: 80%;
-	overflow: hidden;
-	margin: auto;
+	width: 85%;
+	height: 75%;
 	padding: 5px;
+	overflow: hidden;
 	cursor: default;
-	line-height: 75%;
-	text-align: center;
-	border-color: lightgrey;
-	border-width: 1px;
-	border-style: solid;
+	line-height: 90%;
+	text-align: left;
+	position: relative;
+	box-shadow: 0px 1px 3px -2px black;
 }
 
 .gridCourseName{
@@ -86,8 +65,7 @@ grid:after, grid:before{
 	width: 100%;
 	height: 20px;
 	text-align: center;
-	background-color: #333333;
-	color: lightgrey;
+	color: grey;
 	font-weight: bolder;
 }
 
@@ -96,19 +74,19 @@ grid:after, grid:before{
 }
 
 .statusFailed{
-	background-color: #CF676F;
+	background-color: #ce5043;
 }
 
 .statusFailed2{
-	background-color: #C2414A;
-}
-
-.statusCanceled{
-	background-color: lightgrey;
+	background-color: #ce5043;
 }
 
 .statusApproved{
-	background-color: #7499E0;
+	background-color:#1aa1e1;
+}
+
+.statusCanceled{
+	background-color: #777777;
 }
 
 .statusExempt{
@@ -123,56 +101,21 @@ grid:after, grid:before{
 	background-color: #E9C964;
 }
 
-.courseInfo{
-	display: none;
-	text-align: center;
-}
-
-.infoTable{
-	width: 100%;
-	border-collapse: collapse;
-	margin: 0;
-	padding: 0;
-}
-
-.infoTableRow{
-}
-
 [data-assigned = 'true']{
-		cursor: pointer;
+	cursor: pointer;
 }
 
 [data-assigned = 'true']:hover{
-	box-shadow: 1px 1px 4px 0px black;
-	-moz-box-shadow: 1px 1px 4px 0px black;
-	-webkit-box-shadow: 1px 1px 4px 0px black;
+	opacity: 0.85;
 }
 
 [data-selected = 'true']{
-	border-color: black;
-	border-width: 2px;
-	border-style: solid;
-	border-radius: 3px;
-}
-
-.infoTable{
-	max-height: 100px;
-	overflow: scroll;
-}
-
-.infoTableTitle{
-	color: grey;
-	background-color:#eeeeee;
+	box-shadow: 2px 2px 0px 0px #444;
 }
 
 .opttag{
 	font-weight: normal;
 	font-style: italic;
-}
-
-.optleft{
-	margin: 5px;
-	float:left;	
 }
 
 .optCells{
@@ -190,36 +133,151 @@ grid:after, grid:before{
 
 .tabSelectors{
 	width: 100%;
+	float: left;
+	border-bottom-style: solid;
+	border-width: 1px;
+	border-color: darkgrey;
 }
 
 #chartContainer{
-	width: 100%;
+	width: 1000;
 }
 
 .tabSelector{
-	width: 200px;
 	height: 20px;
-	padding: 10px;
+	padding: 10px 10px 10px 30px;
 	float: left;
-	background-color: lightgrey;
 	cursor: pointer;
+	color: #555555;
+	text-align: left;
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	background-origin:padding-box;
+	background-position: left center;
+	margin: 0px 20px 0 20px;
+
+}
+
+.tabSelector:hover{
+	border-bottom-style: solid;
+	border-width: 5px;
+	border-color: #1abc9c;	
+}
+
+#chartTab{
+	background-image: url(chart.png);
+}
+#gridTab{
+	background-image: url(grid.png);
+}
+#listTab{
+	background-image: url(list.png);
+}
+#textTab{
+	background-image: url(note.png);
+}
+
+#chartTab.selectedTab{
+	background-image: url(chart_green.png);
+}
+#gridTab.selectedTab{
+	background-image: url(grid_green.png);
+}
+#listTab.selectedTab{
+	background-image: url(list_green.png);
+}
+#textTab.selectedTab{
+	background-image: url(note_green.png);
 }
 
 .selectedTab{
-	background-color: white;
-	border-color: black; 
-	border-width: 1px;
-	border-color: lightgrey;
-	border-style: solid;
-	border-bottom-style: none;
+	border-bottom-style: solid;
+	border-width: 5px;
+	border-color: #1abc9c; 
+	color: #1abc9c; 
 }
 
 .tabContent{
 	width: 100%;
-	padding: 5px;
-	border-color: lightgrey;
-	border-style: solid;
-	border-width: 1px;
+	background-color:#f9f9f9;
 	float: left;
-
+	overflow: hidden;
 }
+
+.enrollCount{
+	color: white;
+	margin: -1px;
+	background-color: #404040;
+	border-radius: 3px;
+	float: right;
+	width: 16px;
+	font-size: 12px;
+	height: 12px;
+	text-align: center;
+	display: none;
+}
+
+#chartContainer{
+	width:100%;
+	min-width: 100%;
+	max-width: 100%;
+}
+
+.grids{
+	width: 70%; 
+	float: left;
+}
+
+.courseDetails{
+	width: 30%; 
+	float: left;
+}
+
+.courseInfo{
+	display: none;
+	text-align: center;
+	margin: 10px;
+}
+
+.infoTable{
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.infoTable{
+	max-height: 100px;
+	overflow: scroll;
+}
+
+.infoTableTitle{
+	color: grey;
+	background-color:#eeeeee;
+}
+
+.infoTableRow{
+	outline-color: white;
+	outline-style: solid;
+	outline-width: 1px;
+}
+
+.cellSemester{
+	width:15%;
+}
+.cellGrad{
+	width:5%;
+}
+.cellFreq{
+	width:5%;
+}
+.cellStatus{
+	width:60%;
+}
+
+#courseStatus{
+	margin: 5px;
+	padding: 5px;
+	position: relative;
+	background-color: white;
+	box-shadow: 0px 1px 3px -2px black;
+}
+
