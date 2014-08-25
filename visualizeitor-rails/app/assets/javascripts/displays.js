@@ -320,6 +320,7 @@ function gridContentClick(contentId){
 
 function updateCourseInfo (contentId){
   var enrollments = [];
+  document.getElementById('oldInfoTable').innerHTML = "";
 
   courseId = $('#'+contentId).attr('data-courseid');
 
