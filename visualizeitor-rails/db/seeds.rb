@@ -20,7 +20,7 @@ fila = 0
   courses
 end
 
-bcc = Major.create({name: "BCC"})
+bcc = Major.create({name: "BCC", code: "21A"})
 grade_nova = Program.create({name: "Grade Nova", code: "1227"})
 grade_antiga = Program.create({name: "Grade Antiga", code: "308"})
 bcc.programs << grade_nova

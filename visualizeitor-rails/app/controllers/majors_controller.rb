@@ -72,7 +72,8 @@ class MajorsController < ApplicationController
   def upload
     @major = Major.find(params[:major_id])
     uploaded_io = params[:program_xml]
-    crack_xml(uploaded_io)
+    cracker = Cracker.new
+    cracker.crack(uploaded_io)
 
     respond_to do |format|
       format.html { redirect_to majors_url }
