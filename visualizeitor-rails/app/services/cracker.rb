@@ -47,8 +47,6 @@ class Cracker
       if (student.nil?)
         student = Student.new(name: name, grr: grr)
 
-        byebug
-
         major_code = row[CSVHeaders::COURSE_CODE]
         major = Major.find_by_code(major_code)
 
