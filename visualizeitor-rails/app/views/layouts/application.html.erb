@@ -42,7 +42,7 @@
       <div class="navbar-inner">
         <div class="container-fluid">
           <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
+            <span class="ic on-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
@@ -52,39 +52,46 @@
               <li><%= link_to "Cursos", majors_path  %></li>
               <li><%= link_to "Estudantes", students_path  %></li>
               <li><%= link_to "Disciplinas", courses_path  %></li>
+
+            </ul>
+            <ul class="nav pull-right">
+              <% if user_signed_in? %>
+              <li><%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %></li>
+              <li><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+              <% else %>
+              <li><%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %></li>
+              <li><%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
-<%if (params[:controller].eql? 'displays')%>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12">
-      <%= yield %>
-          <%= bootstrap_flash %>
-
-        </div>
-      </div><!--/row-->
-    </div> <!-- /container -->
+<% if (params[:controller].eql? 'displays') %>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <%= bootstrap_flash %>
+        <%= yield %>
+      </div>
+    </div><!--/row-->
+  </div> <!-- /container -->
 <%else%>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span1">
-        </div><!--/span-->
-        <div class="span10">
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span1">
+    </div><!--/span-->
+    <div class="span10">
+      <%= bootstrap_flash %>
+
       <%= yield %>
-          <%= bootstrap_flash %>
 
-        </div>
-<div class="span1"></div>
-      </div><!--/row-->
-
-
-
-    </div> <!-- /container -->
-<%end%>
+    </div>
+    <div class="span1"></div>
+  </div><!--/row-->
+</div> <!-- /container -->
+<% end %>
 
   </body>
 </html>

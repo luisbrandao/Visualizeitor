@@ -1,4 +1,5 @@
 Visualizeitor::Application.routes.draw do
+  devise_for :users
   resources :displays
 
   resources :program_items
@@ -37,6 +38,10 @@ Visualizeitor::Application.routes.draw do
     end
     resources :students
 
+  end
+
+  resources :invites do
+    
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

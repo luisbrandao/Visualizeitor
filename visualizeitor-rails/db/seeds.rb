@@ -1,3 +1,13 @@
+def create_admins
+  User.create!({:email => "todt@inf.ufpr.br", :role => :admin, :password => "123456", :password_confirmation => "123456" })
+  User.create!({:email => "bmuller@inf.ufpr.br", :role => :admin, :password => "123456", :password_confirmation => "123456" })
+  User.create!({:email => "andrey@inf.ufpr.br", :role => :admin, :password => "123456", :password_confirmation => "123456" })
+  User.create!({:email => "spinosa@inf.ufpr.br", :role => :admin, :password => "123456", :password_confirmation => "123456" })
+  User.create!({:email => "leonardowistuba@gmail.com", :role => :admin, :password => "123456", :password_confirmation => "123456" })
+  User.create!({:email => "lennonalberto@gmail.com", :role => :admin, :password => "123456", :password_confirmation => "123456" })
+
+end
+
 def cria_periodo_com_descricao_materias(descricao_materias_array, periodo)
   descricao_materias = []
 
@@ -25,6 +35,9 @@ grade_nova = Program.create({name: "Grade Nova", code: "1227"})
 grade_antiga = Program.create({name: "Grade Antiga", code: "308"})
 bcc.programs << grade_nova
 bcc.programs << grade_antiga
+
+create_admins
+
 
 descricao_materias_periodo1 = cria_periodo_com_descricao_materias(
 [
