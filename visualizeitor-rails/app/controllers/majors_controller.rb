@@ -70,6 +70,7 @@ class MajorsController < ApplicationController
   end
 
   def upload
+    Enrollment.delete_all
     @major = Major.find(params[:major_id])
     uploaded_io = params[:program_xml]
     cracker = Cracker.new
