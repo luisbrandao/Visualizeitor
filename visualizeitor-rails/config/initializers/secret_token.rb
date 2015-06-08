@@ -1,0 +1,1 @@
+Visualizeitor::Application.config.secret_key_base = '0df5d2d551bfc5f632f80b300de9cb5117eded254a63ec6dfe81aeef3a1554e30a8b3b25a4460ee6cc9321904281cadd696c81c31e3ce563b900ce0a289f66a0'

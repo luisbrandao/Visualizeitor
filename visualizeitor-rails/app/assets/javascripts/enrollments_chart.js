@@ -19,7 +19,7 @@ function loadChart1(data){
             type: 'column'
         },
         exporting: {
-            enabled: false
+            enabled: true
         },
         credits: {
             enabled: false

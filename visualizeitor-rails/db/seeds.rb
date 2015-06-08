@@ -5,6 +5,7 @@ def create_admins
   User.create!({:email => "spinosa@inf.ufpr.br", :role => :admin, :password => "123456", :password_confirmation => "123456" })
   User.create!({:email => "leonardowistuba@gmail.com", :role => :admin, :password => "123456", :password_confirmation => "123456" })
   User.create!({:email => "lennonalberto@gmail.com", :role => :admin, :password => "123456", :password_confirmation => "123456" })
+  User.create!({:email => "visitante@mail.com", :role => :admin, :password => "123456", :password_confirmation => "123456" })
 
 end
 
