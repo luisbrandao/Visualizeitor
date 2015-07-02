@@ -73,7 +73,6 @@ class StudentsController < ApplicationController
   end
 
   def search
-
     if (params[:GRR].nil? && params[:GRR].empty?)
       # TODO: validação
     end
