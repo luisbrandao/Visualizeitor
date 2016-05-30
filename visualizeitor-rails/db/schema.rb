@@ -13,14 +13,14 @@
 
 ActiveRecord::Schema.define(version: 20140901233507) do
 
-  create_table "courses", force: true do |t|
+  create_table "courses", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "enrollments", force: true do |t|
+  create_table "enrollments", force: :cascade do |t|
     t.decimal  "grade"
     t.decimal  "frequency"
     t.integer  "year"
@@ -33,14 +33,14 @@ ActiveRecord::Schema.define(version: 20140901233507) do
     t.datetime "updated_at"
   end
 
-  create_table "majors", force: true do |t|
+  create_table "majors", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "program_items", force: true do |t|
+  create_table "program_items", force: :cascade do |t|
     t.integer  "row"
     t.integer  "column"
     t.integer  "program_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20140901233507) do
     t.datetime "updated_at"
   end
 
-  create_table "programs", force: true do |t|
+  create_table "programs", force: :cascade do |t|
     t.string   "name"
     t.string   "code"
     t.integer  "year"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140901233507) do
     t.datetime "updated_at"
   end
 
-  create_table "students", force: true do |t|
+  create_table "students", force: :cascade do |t|
     t.string   "name"
     t.string   "grr"
     t.integer  "program_id"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20140901233507) do
     t.datetime "updated_at"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",       null: false
     t.string   "encrypted_password",     default: "",       null: false
     t.string   "reset_password_token"
