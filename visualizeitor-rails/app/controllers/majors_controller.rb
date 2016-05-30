@@ -73,8 +73,8 @@ class MajorsController < ApplicationController
     Enrollment.delete_all
     @major = Major.find(params[:major_id])
     uploaded_io = params[:program_xml]
-    cracker = Cracker.new
-    cracker.crack(uploaded_io)
+    alunos = Alunoparser.new
+    alunos.parse(uploaded_io)
 
     respond_to do |format|
       format.html { redirect_to majors_url }
@@ -101,7 +101,7 @@ class MajorsController < ApplicationController
 
       students = Hash.new
 
-      alunos.each do |student| 
+      alunos.each do |student|
          grr_student = student['MATR_ALUNO']
          enrollments = students[grr_student]
          if (enrollments.nil?)
@@ -109,9 +109,9 @@ class MajorsController < ApplicationController
           students[grr_student] = enrollments
          end
          enrollments.push(student)
-      end 
+      end
 
-      create_students(students) 
+      create_students(students)
     end
 
     def create_students(students_hash)
@@ -167,13 +167,9 @@ class MajorsController < ApplicationController
           if (new_enrollment.semester <= 0)
             new_enrollment.semester = 1
           end
-
           new_enrollment.status = enrollment_xml['SITUACAO']
-
           database_student.enrollments << new_enrollment
         end
-      end 
-
-
+      end
     end
 end

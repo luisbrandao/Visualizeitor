@@ -1,5 +1,14 @@
 Visualizeitor::Application.routes.draw do
-  devise_for :users
+  resources :internships
+
+  resources :contacts
+
+  resources :companies
+
+  devise_for :teachers
+  devise_for :students
+  resources :teachers
+
   resources :displays
 
   resources :program_items

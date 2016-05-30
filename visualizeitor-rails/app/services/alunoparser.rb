@@ -1,31 +1,30 @@
 require 'csv'
+class Alunoparser
+  module CSVHeaders
+    MAJOR_ID = 0
+    GRR = 1
+    COURSE_VERSION = 2
+    STUDENT_NAME = 3
+    COURSE_CODE = 4
+    COURSE_NAME = 5
+    VERSION_NUMBER = 6
+    STUDENT_CURRICULUM_ID = 7
+    ID_ACTIV_CURRIC = 8
+    YEAR = 9
+    FINAL_GRADE = 10
+    ITEM_SITUATION_ID = 11
+    PERIOD = 12
+    SITUATION = 13
+    ACTIV_CURRIC_CODE = 14
+    ACTIV_CURRIC_NAME = 15
+    CREDITS = 16
+    TOTAL_HOURS = 17
+    STRUCTURE_DESCRIPTION = 22
+    FREQUENCY = 23
+    STATUS = 26
+  end
 
-module CSVHeaders
-  MAJOR_ID = 0
-  GRR = 1
-  COURSE_VERSION = 2
-  STUDENT_NAME = 3
-  COURSE_CODE = 4
-  COURSE_NAME = 5
-  VERSION_NUMBER = 6
-  STUDENT_CURRICULUM_ID = 7
-  ID_ACTIV_CURRIC = 8
-  YEAR = 9
-  FINAL_GRADE = 10
-  ITEM_SITUATION_ID = 11
-  PERIOD = 12
-  SITUATION = 13
-  ACTIV_CURRIC_CODE = 14
-  ACTIV_CURRIC_NAME = 15
-  CREDITS = 16
-  TOTAL_HOURS = 17
-  STRUCTURE_DESCRIPTION = 22
-  FREQUENCY = 23
-  STATUS = 26
-end
-
-class Cracker
-  def crack(content_file)
+  def parse(content_file)
     csv_file = content_file.read
     csv_file = csv_file.force_encoding("utf-8")
 
@@ -42,10 +41,11 @@ class Cracker
         next
       end
       grr = row[CSVHeaders::GRR]
+      grr.downcase!
       name = row[CSVHeaders::STUDENT_NAME]
       student = Student.find_by_grr(grr)
       if (student.nil?)
-        student = Student.new(name: name, grr: grr)
+        student = Student.new(name: name, grr: grr, password: '123456')
 
         major_code = row[CSVHeaders::COURSE_CODE]
         major = Major.find_by_code(major_code)

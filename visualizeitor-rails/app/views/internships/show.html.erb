@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @internship.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @internship.end %>
+</p>
+
+<p>
+  <strong>Hours:</strong>
+  <%= @internship.hours %>
+</p>
+
+<p>
+  <strong>Assisttype:</strong>
+  <%= @internship.assistType %>
+</p>
+
+<p>
+  <strong>Interntype:</strong>
+  <%= @internship.internType %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @internship.student %>
+</p>
+
+<p>
+  <strong>Teacher:</strong>
+  <%= @internship.teacher %>
+</p>
+
+<p>
+  <strong>Contact:</strong>
+  <%= @internship.contact %>
+</p>
+
+<%= link_to 'Edit', edit_internship_path(@internship) %> |
+<%= link_to 'Back', internships_path %>

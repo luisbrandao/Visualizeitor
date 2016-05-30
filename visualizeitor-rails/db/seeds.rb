@@ -1,14 +1,3 @@
-def create_admins
-  User.create!({:email => "todt@inf.ufpr.br", :role => :admin, :password => "123456", :password_confirmation => "123456" })
-  User.create!({:email => "bmuller@inf.ufpr.br", :role => :admin, :password => "123456", :password_confirmation => "123456" })
-  User.create!({:email => "andrey@inf.ufpr.br", :role => :admin, :password => "123456", :password_confirmation => "123456" })
-  User.create!({:email => "spinosa@inf.ufpr.br", :role => :admin, :password => "123456", :password_confirmation => "123456" })
-  User.create!({:email => "leonardowistuba@gmail.com", :role => :admin, :password => "123456", :password_confirmation => "123456" })
-  User.create!({:email => "lennonalberto@gmail.com", :role => :admin, :password => "123456", :password_confirmation => "123456" })
-  User.create!({:email => "visitante@mail.com", :role => :admin, :password => "123456", :password_confirmation => "123456" })
-
-end
-
 def cria_periodo_com_descricao_materias(descricao_materias_array, periodo)
   descricao_materias = []
 
@@ -18,7 +7,7 @@ def cria_periodo_com_descricao_materias(descricao_materias_array, periodo)
       curso = Course.create(desc_materia)
     end
     descricao_materias.push(curso)
-  end 
+  end
 
   courses = []
 
@@ -37,12 +26,9 @@ grade_antiga = Program.create({name: "Grade Antiga", code: "308"})
 bcc.programs << grade_nova
 bcc.programs << grade_antiga
 
-create_admins
-
-
 descricao_materias_periodo1 = cria_periodo_com_descricao_materias(
 [
-  {code:"CI068", name:"Circuitos Lógicos"}, 
+  {code:"CI068", name:"Circuitos Lógicos"},
   {code:"CI055", name:"Algoritmos e Estrutura de Dados I"},
   {code:"CM046", name:"Introdução a Álbebra"},
   {code:"CM045", name:"Geometria Analítica I"},
@@ -51,7 +37,7 @@ descricao_materias_periodo1 = cria_periodo_com_descricao_materias(
 
 descricao_materias_periodo2 = cria_periodo_com_descricao_materias(
 [
-  {code:"CI210", name:"Projetos Digitais e Microprocessadores"}, 
+  {code:"CI210", name:"Projetos Digitais e Microprocessadores"},
   {code:"CI056", name:"Algoritmos e Estruturas de Dados II"},
   {code:"CI067", name:"Oficina de Computação"},
   {code:"CM005", name:"Álbebra Linear"},
@@ -60,7 +46,7 @@ descricao_materias_periodo2 = cria_periodo_com_descricao_materias(
 
 descricao_materias_periodo3 = cria_periodo_com_descricao_materias(
 [
-  {code:"CI212", name:"Organização e Arquitetura de Computadores"}, 
+  {code:"CI212", name:"Organização e Arquitetura de Computadores"},
   {code:"CI057", name:"Algoritmos e Estruturas de Dados III"},
   {code:"CI064", name:"Software Básico"},
   {code:"CI237", name:"Matemática Discreta"},
@@ -69,7 +55,7 @@ descricao_materias_periodo3 = cria_periodo_com_descricao_materias(
 
 descricao_materias_periodo4 = cria_periodo_com_descricao_materias(
 [
-  {code:"CI215", name:"Sistemas Operacionais"}, 
+  {code:"CI215", name:"Sistemas Operacionais"},
   {code:"CI062", name:"Técnicas Alternativas de Programação"},
   {code:"CE003", name:"Estatística II"},
   {code:"CI058", name:"Redes de Computadores I"},
@@ -77,7 +63,7 @@ descricao_materias_periodo4 = cria_periodo_com_descricao_materias(
   ], 3)
 descricao_materias_periodo5 = cria_periodo_com_descricao_materias(
 [
-  {code:"CI162", name:"Engenharia de Requisitos"}, 
+  {code:"CI162", name:"Engenharia de Requisitos"},
   {code:"CI065", name:"Algoritmos e Teoria dos Grafos"},
   {code:"CI059", name:"Introdução à Teoria da Computação"},
   {code:"CI061", name:"Redes de Computadores II"},
@@ -86,7 +72,7 @@ descricao_materias_periodo5 = cria_periodo_com_descricao_materias(
 
 descricao_materias_periodo6 = cria_periodo_com_descricao_materias(
 [
-  {code:"CI163", name:"Projeto de Software"}, 
+  {code:"CI163", name:"Projeto de Software"},
   {code:"CI165", name:"Análise de Algoritmos"},
   {code:"CI209", name:"Inteligência Artificial"},
   {code:"CI218", name:"Sistemas de Bancos de Dados"},
@@ -95,7 +81,7 @@ descricao_materias_periodo6 = cria_periodo_com_descricao_materias(
 
 descricao_materias_periodo7 = cria_periodo_com_descricao_materias(
 [
-  {code:"CI221", name:"Engenharia de Software"}, 
+  {code:"CI221", name:"Engenharia de Software"},
   {code:"CI211", name:"Construção de Compiladores"},
   {code:"TGI",  name:"Trabalho de Graduação I"},
   {code:"OPT",  name:"Disciplina Optativa"},
@@ -103,7 +89,7 @@ descricao_materias_periodo7 = cria_periodo_com_descricao_materias(
 
 descricao_materias_periodo8 = cria_periodo_com_descricao_materias(
 [
-  {code:"OPT",  name:"Disciplina Optativa"}, 
+  {code:"OPT",  name:"Disciplina Optativa"},
   {code:"OPT",  name:"Disciplina Optativa"},
   {code:"TGII", name:"Trabalho de Graduação II"},
   {code:"OPT",  name:"Disciplina Optativa"},

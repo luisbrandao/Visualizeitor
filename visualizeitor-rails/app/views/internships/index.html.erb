@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Internships</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start</th>
+      <th>End</th>
+      <th>Hours</th>
+      <th>Assisttype</th>
+      <th>Interntype</th>
+      <th>Student</th>
+      <th>Teacher</th>
+      <th>Contact</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @internships.each do |internship| %>
+      <tr>
+        <td><%= internship.start %></td>
+        <td><%= internship.end %></td>
+        <td><%= internship.hours %></td>
+        <td><%= internship.assistType %></td>
+        <td><%= internship.internType %></td>
+        <td><%= internship.student %></td>
+        <td><%= internship.teacher %></td>
+        <td><%= internship.contact %></td>
+        <td><%= link_to 'Show', internship %></td>
+        <td><%= link_to 'Edit', edit_internship_path(internship) %></td>
+        <td><%= link_to 'Destroy', internship, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Internship', new_internship_path %>
