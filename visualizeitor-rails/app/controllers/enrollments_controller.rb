@@ -74,7 +74,7 @@ class EnrollmentsController < ApplicationController
           elsif(enrollment.status.eql?('Reprovado por Frequência'))
             disapproved_frequency_number = disapproved_frequency_number + 1
           end
-        end 
+        end
         json_wrapper[:approved].push(approved)
         json_wrapper[:disapproved_grade_number].push(disapproved_grade_number)
         json_wrapper[:disapproved_frequency_number].push(disapproved_frequency_number)
@@ -132,7 +132,7 @@ class EnrollmentsController < ApplicationController
             valid_enrollments_quantity = valid_enrollments_quantity + 1
             grades_sum = grades_sum + grade
           end
-        end 
+        end
 
         average = 0
 
@@ -218,7 +218,7 @@ class EnrollmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def enrollment_params
-      params.require(:enrollment).permit(:grade, :frequency, :year, :semester, :status)
+      params.require(:enrollment).permit!
     end
 
     def create_hash_enrollments(enrollments)

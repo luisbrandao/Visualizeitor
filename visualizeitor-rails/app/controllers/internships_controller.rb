@@ -71,6 +71,6 @@ class InternshipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def internship_params
-      params.require(:internship).permit(:start, :end, :hours, :assistType, :internType, :student_id, :teacher_id, :contact_id)
+      params.require(:internship).permit!
     end
 end

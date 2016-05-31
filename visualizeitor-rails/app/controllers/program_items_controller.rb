@@ -72,6 +72,6 @@ class ProgramItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_item_params
-      params.require(:program_item).permit(:row, :column)
+      params.require(:program_item).permit!
     end
 end

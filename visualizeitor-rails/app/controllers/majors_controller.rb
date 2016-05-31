@@ -90,7 +90,7 @@ class MajorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def major_params
-      params.require(:major).permit(:name, :code)
+      params.require(:major).permit!
     end
 
     def crack_xml(content_file)
