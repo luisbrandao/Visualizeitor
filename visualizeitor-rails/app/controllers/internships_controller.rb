@@ -15,10 +15,12 @@ class InternshipsController < ApplicationController
   # GET /internships/new
   def new
     @internship = Internship.new
+    @contacts = Contact.order('name')
   end
 
   # GET /internships/1/edit
   def edit
+    @contacts = Contact.order('name')
   end
 
   # POST /internships

@@ -1,5 +1,4 @@
-<p id="notice"><%= notice %></p>
-
+<h1>Detalhes da Empresa</h1>
 <p>
   <strong>Name:</strong>
   <%= @company.name %>
@@ -14,6 +13,18 @@
   <strong>Activity:</strong>
   <%= @company.activity %>
 </p>
+
+
+<HR SIZE="1">
+<p>
+  <h2>Contatos:</h2>
+  <% if @company.contacts.any? %>
+    <% @company.contacts.each do |telefone| %>
+      Nome: <%= telefone.name %> Número: <%= telefone.phone %> | E-mail: <%= telefone.email %> | Formação <%= telefone.qualification %> <br>
+    <% end %>
+  <% end %>
+</p>
+
 
 <%= link_to 'Edit', edit_company_path(@company) %> |
 <%= link_to 'Back', companies_path %>
