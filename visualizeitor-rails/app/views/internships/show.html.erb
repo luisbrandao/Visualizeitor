@@ -1,37 +1,66 @@
+<h1>Detalhes do Estágio</h1>
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Start:</strong>
-  <%= @internship.start %>
-</p>
-
-<p>
-  <strong>End:</strong>
-  <%= @internship.end %>
-</p>
-
-<p>
-  <strong>Hours:</strong>
-  <%= @internship.hours %>
-</p>
-
-<p>
-  <strong>Assisttype:</strong>
-  <%= @internship.assistType %>
-</p>
-
-<p>
-  <strong>Interntype:</strong>
-  <%= @internship.internType %>
-</p>
-
-<p>
-  <strong>Student:</strong>
+  <strong>Nome do estágiario:</strong>
   <%= @internship.student %>
 </p>
 
 <p>
-  <strong>Teacher:</strong>
+  <strong>Nome do supervisor de estágio na parte Concedente:</strong>
+  <%= @internship.contact.name %>
+</p>
+
+<p>
+  <strong>Formação profissional do supervisor:</strong>
+  <%= @internship.contact.qualification %>
+</p>
+
+<p>
+  <strong>Ramo de atividade da parte Concedente:</strong>
+  <%= @internship.contact.company.activity %>
+</p>
+
+<p>
+  <strong>Atividade do estágiario:</strong>
+  <%= @internship.assignment %>
+</p>
+
+<p>
+  <strong>Atividades a serem desenvolvidas:</strong>
+  <p>
+  <%= h(@internship.goals).gsub(/\n/, '<br/>').html_safe %>
+  </p>
+</p>
+
+<p>
+  <strong>Inicio do estágio:</strong>
+  <%= @internship.start %>
+</p>
+
+<p>
+  <strong>Fim do estágio:</strong>
+  <%= @internship.end %>
+</p>
+
+<p>
+  <strong>Horas/Semana:</strong>
+  <%= @internship.hours %>
+</p>
+
+<p>
+  <strong>Tipo de supervisão de estágio:</strong>
+  <%= @internship.assistType_txt %>
+</p>
+
+<p>
+  <strong>Tipo de estágio:</strong>
+  <%= @internship.internType_txt %>
+</p>
+
+<p>
+  <strong>Professor supervisor:</strong>
   <%= @internship.teacher %>
 </p>
 

@@ -20,4 +20,7 @@ class Student < ActiveRecord::Base
     false
   end
 
+  def to_s
+    name
+  end
 end

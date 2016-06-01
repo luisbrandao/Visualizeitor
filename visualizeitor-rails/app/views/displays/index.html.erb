@@ -4,13 +4,16 @@
 
 <div style="clear:both"></div>
 
-<span class="tooltip" id="tooltip">text</span>
+<% if teacher_signed_in? %>
+  <span class="tooltip" id="tooltip">text</span>
+  <div class="info container" id="search-container">
+    <input id="GRR" type="text" value=""></input>
 
-<div class="info container" id="search-container">
-	<input id="GRR" type="text" value="GRR20093551"></input>
-
-	<span class='btn' id="buttonSearchGRR">Buscar</span>
-</div>
+    <span class='btn' id="buttonSearchGRR">Buscar</span>
+  </div>
+<% elsif student_signed_in? %>
+  <input TYPE="hidden" id="GRR" type="text" value="<%=@GRR%>"></input>
+<% end %>
 
 <div class="info container" id="studentInfo">
 	<div id="studentName"></div>
@@ -54,29 +57,29 @@
 							<td id="lastGrade"></td>
 							<td id="lastFreq"></td>
 							<td id="lastStatus"></td>
-						</tr>			
-					</table>	
+						</tr>
+					</table>
 				</div>
 				<br/>
 				<div id="infoTableTitle">Situações anteriores</div>
 				<div id="courseStatus" class="courseOldInfo">
 					<table class="infoTable" id="oldInfoTable">
-					</table>	
+					</table>
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<div class="tabContent" id="chartTabContent" style="display:none"> 
+	<div class="tabContent" id="chartTabContent" style="display:none">
 		<div id="chartContainer"></div>
 	</div>
-	
+
 	<!--
-	<div class="tabContent" id="listTabContent" style="display:none"> 
+	<div class="tabContent" id="listTabContent" style="display:none">
 		<div id="listContainer"></div>
 	</div>-->
 	<!--
-	<div class="tabContent" id="textTabContent" style="display:none"> 
+	<div class="tabContent" id="textTabContent" style="display:none">
 		<div id="textContainer"></div>
 	</div> -->
 </div>

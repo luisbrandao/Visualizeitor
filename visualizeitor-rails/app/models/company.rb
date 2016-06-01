@@ -6,4 +6,7 @@ class Company < ActiveRecord::Base
                                 reject_if: proc { |attributes| attributes['name'].blank?},
                                 allow_destroy: true
 
+  def to_s
+    name
+  end
 end

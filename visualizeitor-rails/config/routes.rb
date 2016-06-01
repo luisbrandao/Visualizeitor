@@ -4,8 +4,8 @@ Visualizeitor::Application.routes.draw do
   resources :contacts
 
   resources :companies
+  devise_for :teachers, :skip => [:registrations]
 
-  devise_for :teachers
   devise_for :students
   resources :teachers
 
@@ -31,7 +31,7 @@ Visualizeitor::Application.routes.draw do
       collection do
         get 'chart'
       end
-      
+
     end
   end
 
@@ -50,7 +50,7 @@ Visualizeitor::Application.routes.draw do
   end
 
   resources :invites do
-    
+
   end
 
   resources :users, only: :index do

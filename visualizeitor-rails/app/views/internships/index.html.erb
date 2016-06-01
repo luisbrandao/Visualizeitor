@@ -3,29 +3,29 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>Start</th>
-      <th>End</th>
-      <th>Hours</th>
-      <th>Assisttype</th>
-      <th>Interntype</th>
-      <th>Student</th>
-      <th>Teacher</th>
-      <th>Contact</th>
-      <th>Actions</th>
+      <th>Estudante</th>
+      <th>Inicio</th>
+      <th>Fim</th>
+      <th>Hours/semana</th>
+      <th>Tipo de supervisão</th>
+      <th>Tipo de estágio</th>
+      <th>Supervisor</th>
+      <th>Empresa</th>
+      <th>Ações</th>
     </tr>
   </thead>
 
   <tbody>
     <% @internships.each do |internship| %>
       <tr>
+        <td><%= internship.student %></td>
         <td><%= internship.start %></td>
         <td><%= internship.end %></td>
         <td><%= internship.hours %></td>
-        <td><%= internship.assistType %></td>
-        <td><%= internship.internType %></td>
-        <td><%= internship.student %></td>
+        <td><%= internship.assistType_txt %></td>
+        <td><%= internship.internType_txt %></td>
         <td><%= internship.teacher %></td>
-        <td><%= internship.contact %></td>
+        <td><%= internship.contact.company %></td>
         <td><%= link_to 'Show', internship %>
         <%= link_to 'Edit', edit_internship_path(internship) %></td>
       </tr>

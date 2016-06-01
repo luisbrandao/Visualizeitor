@@ -6,6 +6,9 @@ class DisplaysController < ApplicationController
   # GET /displays
   # GET /displays.json
   def index
+    if student_signed_in?
+      @GRR = current_student.grr
+    end
   end
 
 end

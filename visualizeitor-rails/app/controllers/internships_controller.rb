@@ -1,10 +1,15 @@
 class InternshipsController < ApplicationController
+  before_filter :authenticate_student!, only: [:new, :edit]
   before_action :set_internship, only: [:show, :edit, :update, :destroy]
 
   # GET /internships
   # GET /internships.json
   def index
-    @internships = Internship.all
+    if student_signed_in?
+      @internships = Internship.all.where(student_id: current_student.id)
+    else
+      @internships = Internship.all
+    end
   end
 
   # GET /internships/1
@@ -15,6 +20,7 @@ class InternshipsController < ApplicationController
   # GET /internships/new
   def new
     @internship = Internship.new
+
     @contacts = Contact.order('name')
   end
 
@@ -27,6 +33,7 @@ class InternshipsController < ApplicationController
   # POST /internships.json
   def create
     @internship = Internship.new(internship_params)
+    @internship.student_id = current_student.id
 
     respond_to do |format|
       if @internship.save
