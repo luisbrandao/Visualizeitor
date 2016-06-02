@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>State:</strong>
+  <%= @acform.state %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @acform.student %>
+</p>
+
+<%= link_to 'Edit', edit_acform_path(@acform) %> |
+<%= link_to 'Back', acforms_path %>
