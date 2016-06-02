@@ -1,6 +1,10 @@
-<h1>Editing Internship</h1>
+<h1>Editando estágio</h1>
 
-<%= render 'form' %>
+<% if teacher_signed_in? %>
+  <%= render 'teacher_form' %>
+<% elsif student_signed_in? %>
+  <%= render 'form' %>
+<% end %>
 
 <%= link_to 'Show', @internship %> |
 <%= link_to 'Back', internships_path %>

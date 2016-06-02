@@ -1,5 +1,5 @@
 class InternshipsController < ApplicationController
-  before_filter :authenticate_student!, only: [:new, :edit]
+  # before_filter :authenticate_student!, only: [:new, :edit]
   before_action :set_internship, only: [:show, :edit, :update, :destroy]
 
   # GET /internships
@@ -49,6 +49,10 @@ class InternshipsController < ApplicationController
   # PATCH/PUT /internships/1
   # PATCH/PUT /internships/1.json
   def update
+    if teacher_signed_in?
+      @internship.teacher_id = current_teacher.id
+    end
+
     respond_to do |format|
       if @internship.update(internship_params)
         format.html { redirect_to @internship, notice: 'Internship was successfully updated.' }

@@ -4,10 +4,14 @@ class Internship < ActiveRecord::Base
   belongs_to :contact
 
   def internType_txt
-    ["Obrigatório", "Não Obrigatório"][self.assistType]
+    if !self.internType.blank?
+      ["Obrigatório", "Não Obrigatório"][self.internType]
+    end
   end
 
   def assistType_txt
-    ["Direta", "Semi-direta", "Indireta"][self.internType]
+    if !self.assistType.blank?
+      ["Direta", "Semi-direta", "Indireta"][self.assistType]
+    end
   end
 end

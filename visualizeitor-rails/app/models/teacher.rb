@@ -13,4 +13,8 @@ class Teacher < ActiveRecord::Base
   def email_changed?
     false
   end
+
+  def to_s
+    name
+  end
 end
