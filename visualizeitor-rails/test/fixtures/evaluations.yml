@@ -4,8 +4,10 @@ one:
   state: MyString
   teacher_id: 
   acform_id: 
+  comment: MyText
 
 two:
   state: MyString
   teacher_id: 
   acform_id: 
+  comment: MyText

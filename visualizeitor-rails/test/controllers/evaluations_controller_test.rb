@@ -18,7 +18,7 @@ class EvaluationsControllerTest < ActionController::TestCase
 
   test "should create evaluation" do
     assert_difference('Evaluation.count') do
-      post :create, evaluation: { acform_id: @evaluation.acform_id, state: @evaluation.state, teacher_id: @evaluation.teacher_id }
+      post :create, evaluation: { acform_id: @evaluation.acform_id, comment: @evaluation.comment, state: @evaluation.state, teacher_id: @evaluation.teacher_id }
     end
 
     assert_redirected_to evaluation_path(assigns(:evaluation))
@@ -35,7 +35,7 @@ class EvaluationsControllerTest < ActionController::TestCase
   end
 
   test "should update evaluation" do
-    patch :update, id: @evaluation, evaluation: { acform_id: @evaluation.acform_id, state: @evaluation.state, teacher_id: @evaluation.teacher_id }
+    patch :update, id: @evaluation, evaluation: { acform_id: @evaluation.acform_id, comment: @evaluation.comment, state: @evaluation.state, teacher_id: @evaluation.teacher_id }
     assert_redirected_to evaluation_path(assigns(:evaluation))
   end
 

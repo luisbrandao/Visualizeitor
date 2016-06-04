@@ -4,6 +4,7 @@ class CreateEvaluations < ActiveRecord::Migration
       t.string :state
       t.references :teacher, index: true
       t.references :acform, index: true
+      t.text :comment
 
       t.timestamps null: false
     end
