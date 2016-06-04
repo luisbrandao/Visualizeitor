@@ -11,7 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531210208) do
+ActiveRecord::Schema.define(version: 20160604205147) do
+
+  create_table "acforms", force: :cascade do |t|
+    t.integer  "state"
+    t.integer  "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "acforms", ["student_id"], name: "index_acforms_on_student_id"
+
+  create_table "activities", force: :cascade do |t|
+    t.date     "start"
+    t.date     "end"
+    t.integer  "hours"
+    t.integer  "hoursvalid"
+    t.integer  "acform_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "activities", ["acform_id"], name: "index_activities_on_acform_id"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "descr"
+    t.string   "softlimit"
+    t.string   "hardlimit"
+    t.integer  "activity_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "categories", ["activity_id"], name: "index_categories_on_activity_id"
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -40,6 +72,15 @@ ActiveRecord::Schema.define(version: 20160531210208) do
     t.datetime "updated_at"
   end
 
+  create_table "documents", force: :cascade do |t|
+    t.string   "descr"
+    t.integer  "activity_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "documents", ["activity_id"], name: "index_documents_on_activity_id"
+
   create_table "enrollments", force: :cascade do |t|
     t.decimal  "grade"
     t.decimal  "frequency"
@@ -52,6 +93,18 @@ ActiveRecord::Schema.define(version: 20160531210208) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "evaluations", force: :cascade do |t|
+    t.string   "state"
+    t.integer  "teacher_id"
+    t.integer  "acform_id"
+    t.text     "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "evaluations", ["acform_id"], name: "index_evaluations_on_acform_id"
+  add_index "evaluations", ["teacher_id"], name: "index_evaluations_on_teacher_id"
 
   create_table "internships", force: :cascade do |t|
     t.date     "start"

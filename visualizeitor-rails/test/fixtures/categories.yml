@@ -4,10 +4,10 @@ one:
   descr: MyString
   softlimit: MyString
   hardlimit: MyString
-  activity: 
+  activity_id: 
 
 two:
   descr: MyString
   softlimit: MyString
   hardlimit: MyString
-  activity: 
+  activity_id: 

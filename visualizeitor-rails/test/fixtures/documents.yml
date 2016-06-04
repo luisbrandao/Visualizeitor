@@ -2,8 +2,8 @@
 
 one:
   descr: MyString
-  activity: 
+  activity_id: 
 
 two:
   descr: MyString
-  activity: 
+  activity_id: 

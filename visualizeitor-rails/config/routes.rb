@@ -1,9 +1,9 @@
 Visualizeitor::Application.routes.draw do
-  resources :evaluations
-
   resources :documents
 
   resources :categories
+
+  resources :evaluations
 
   resources :acforms
 
