@@ -15,6 +15,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   def new
     @activity = Activity.new
+    @activity.documents.build
   end
 
   # GET /activities/1/edit
@@ -26,13 +27,18 @@ class ActivitiesController < ApplicationController
   def create
     @activity = Activity.new(activity_params)
 
-    respond_to do |format|
-      if @activity.save
-        format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @activity }
-      else
-        format.html { render action: 'new' }
-        format.json { render json: @activity.errors, status: :unprocessable_entity }
+    if params[:add_item]
+      @activity.documents.build
+      render :action => 'new'
+    else
+      respond_to do |format|
+        if @activity.save
+          format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
+          format.json { render action: 'show', status: :created, location: @activity }
+        else
+          format.html { render action: 'new' }
+          format.json { render json: @activity.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -40,13 +46,23 @@ class ActivitiesController < ApplicationController
   # PATCH/PUT /activities/1
   # PATCH/PUT /activities/1.json
   def update
-    respond_to do |format|
-      if @activity.update(activity_params)
-        format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @activity.errors, status: :unprocessable_entity }
+    if params[:add_item]
+      unless params[:activity][:documents_attributes].blank?
+        for attribute in params[:activity][:documents_attributes].permit!
+          @activity.documents.build(attribute.last.except(:_destroy)) unless attribute.last.has_key?(:id)
+        end
+      end
+      @activity.documents.build
+      render :action => 'edit'
+    else
+      respond_to do |format|
+        if @activity.update(activity_params)
+          format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: 'edit' }
+          format.json { render json: @activity.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -69,6 +85,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:start, :end, :hours, :hoursvalid, :acform_id)
+      params.require(:activity).permit!
     end
 end

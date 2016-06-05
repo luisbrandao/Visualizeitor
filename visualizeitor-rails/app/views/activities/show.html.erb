@@ -1,29 +1,45 @@
-<p id="notice"><%= notice %></p>
-
+<h1>Detalhes da atividade</h1>
 <p>
-  <strong>Start:</strong>
+  <strong>Data de Inicio:</strong>
   <%= @activity.start %>
 </p>
 
 <p>
-  <strong>End:</strong>
+  <strong>Data de fim:</strong>
   <%= @activity.end %>
 </p>
 
 <p>
-  <strong>Hours:</strong>
+  <strong>Horas:</strong>
   <%= @activity.hours %>
 </p>
 
 <p>
-  <strong>Hoursvalid:</strong>
+  <strong>Horas aprovadas:</strong>
   <%= @activity.hoursvalid %>
+</p>
+
+<p>
+  <strong>Categoria:</strong>
+  <%= @activity.category %>
 </p>
 
 <p>
   <strong>Acform:</strong>
   <%= @activity.acform %>
 </p>
+
+<HR SIZE="1">
+<p>
+  <h2>Documentos:</h2>
+  <% if @activity.documents.any? %>
+    <% @activity.documents.each do |document| %>
+      Descr: <%= document.descr %>, link <br>
+    <% end %>
+  <% end %>
+</p>
+
+
 
 <%= link_to 'Edit', edit_activity_path(@activity) %> |
 <%= link_to 'Back', activities_path %>

@@ -1,13 +1,11 @@
 Visualizeitor::Application.routes.draw do
-  resources :documents
-
   resources :categories
+
+  resources :activities
 
   resources :evaluations
 
   resources :acforms
-
-  resources :activities
 
   resources :internships
 

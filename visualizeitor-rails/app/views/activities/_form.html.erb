@@ -1,36 +1,33 @@
 <%= form_for(@activity) do |f| %>
-  <% if @activity.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
-
-      <ul>
-      <% @activity.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
-    <%= f.label :start %><br>
+    <%= f.label :category_id, "Categoria" %><br>
+    <%= collection_select(:activity, :category_id, Category.all, :id, :descr, {:prompt => "Selecione uma categoria" }) %>
+  </div>
+  <div class="field">
+    <%= f.label :start, "Data de início" %><br>
     <%= f.date_select :start %>
   </div>
   <div class="field">
-    <%= f.label :end %><br>
+    <%= f.label :end, "Data do fim" %><br>
     <%= f.date_select :end %>
   </div>
   <div class="field">
-    <%= f.label :hours %><br>
+    <%= f.label :hours, "Horas requisitads" %><br>
     <%= f.number_field :hours %>
   </div>
-  <div class="field">
-    <%= f.label :hoursvalid %><br>
-    <%= f.number_field :hoursvalid %>
-  </div>
-  <div class="field">
-    <%= f.label :acform_id %><br>
-    <%= f.text_field :acform_id %>
-  </div>
+
+  <%= f.fields_for :documents do |document| %>
+    <div class="form-inline">
+      <%= document.label :descr, "Descrição: " %>
+      <%= document.text_field :descr %>
+      Caixa de upload
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.submit 'Adicionar novo documento', :name => "add_item" %>
+  </p>
+
   <div class="actions">
     <%= f.submit %>
   </div>

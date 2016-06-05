@@ -1,15 +1,12 @@
-<p id="notice"><%= notice %></p>
+<h1>Listando Categorias</h1>
 
-<h1>Listing Categories</h1>
-
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Descr</th>
-      <th>Softlimit</th>
-      <th>Hardlimit</th>
-      <th>Activity</th>
-      <th colspan="3"></th>
+      <th>Descrição</th>
+      <th>Horas por semestre</th>
+      <th>Maximo de horas</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -19,10 +16,9 @@
         <td><%= category.descr %></td>
         <td><%= category.softlimit %></td>
         <td><%= category.hardlimit %></td>
-        <td><%= category.activity %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', category %>
+        <%= link_to 'Edit', edit_category_path(category) %>
+        <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

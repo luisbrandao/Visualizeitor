@@ -1,23 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Descr:</strong>
+  <strong>Descrição:</strong>
   <%= @category.descr %>
 </p>
 
 <p>
-  <strong>Softlimit:</strong>
+  <strong>Horas por semestre:</strong>
   <%= @category.softlimit %>
 </p>
 
 <p>
-  <strong>Hardlimit:</strong>
+  <strong>Maximo de horas:</strong>
   <%= @category.hardlimit %>
-</p>
-
-<p>
-  <strong>Activity:</strong>
-  <%= @category.activity %>
 </p>
 
 <%= link_to 'Edit', edit_category_path(@category) %> |

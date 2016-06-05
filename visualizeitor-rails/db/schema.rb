@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160604205147) do
+ActiveRecord::Schema.define(version: 20160605161344) do
 
   create_table "acforms", force: :cascade do |t|
     t.integer  "state"
@@ -28,22 +28,21 @@ ActiveRecord::Schema.define(version: 20160604205147) do
     t.integer  "hours"
     t.integer  "hoursvalid"
     t.integer  "acform_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "activities", ["acform_id"], name: "index_activities_on_acform_id"
-
-  create_table "categories", force: :cascade do |t|
-    t.string   "descr"
-    t.string   "softlimit"
-    t.string   "hardlimit"
-    t.integer  "activity_id"
+    t.integer  "category_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
 
-  add_index "categories", ["activity_id"], name: "index_categories_on_activity_id"
+  add_index "activities", ["acform_id"], name: "index_activities_on_acform_id"
+  add_index "activities", ["category_id"], name: "index_activities_on_category_id"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "descr"
+    t.integer  "softlimit"
+    t.integer  "hardlimit"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
