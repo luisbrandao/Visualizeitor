@@ -1,4 +1,4 @@
-class Document < ActiveRecord::Base
+class Acdoc < ActiveRecord::Base
   belongs_to :activity
 
   def to_s

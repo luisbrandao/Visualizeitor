@@ -1,7 +1,7 @@
 class Activity < ActiveRecord::Base
-  has_many :documents, dependent: :destroy, autosave: true
+  has_many :acdocs, dependent: :destroy, autosave: true
 
-  accepts_nested_attributes_for :documents,
+  accepts_nested_attributes_for :acdocs,
                                 reject_if: proc { |attributes| attributes['descr'].blank?},
                                 allow_destroy: true
 

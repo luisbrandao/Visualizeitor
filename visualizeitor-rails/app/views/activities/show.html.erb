@@ -32,8 +32,8 @@
 <HR SIZE="1">
 <p>
   <h2>Documentos:</h2>
-  <% if @activity.documents.any? %>
-    <% @activity.documents.each do |document| %>
+  <% if @activity.acdocs.any? %>
+    <% @activity.acdocs.each do |document| %>
       Descr: <%= document.descr %>, link <br>
     <% end %>
   <% end %>

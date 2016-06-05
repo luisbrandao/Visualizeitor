@@ -16,7 +16,7 @@
     <%= f.number_field :hours %>
   </div>
 
-  <%= f.fields_for :documents do |document| %>
+  <%= f.fields_for :acdocs do |document| %>
     <div class="form-inline">
       <%= document.label :descr, "Descrição: " %>
       <%= document.text_field :descr %>

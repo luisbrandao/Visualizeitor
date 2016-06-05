@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605161344) do
+ActiveRecord::Schema.define(version: 20160605193149) do
+
+  create_table "acdocs", force: :cascade do |t|
+    t.string   "descr"
+    t.integer  "activity_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "acdocs", ["activity_id"], name: "index_acdocs_on_activity_id"
 
   create_table "acforms", force: :cascade do |t|
     t.integer  "state"

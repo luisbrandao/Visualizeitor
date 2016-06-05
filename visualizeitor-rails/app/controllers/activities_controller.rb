@@ -15,7 +15,7 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   def new
     @activity = Activity.new
-    @activity.documents.build
+    @activity.acdocs.build
   end
 
   # GET /activities/1/edit
@@ -28,7 +28,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.new(activity_params)
 
     if params[:add_item]
-      @activity.documents.build
+      @activity.acdocs.build
       render :action => 'new'
     else
       respond_to do |format|
@@ -47,12 +47,12 @@ class ActivitiesController < ApplicationController
   # PATCH/PUT /activities/1.json
   def update
     if params[:add_item]
-      unless params[:activity][:documents_attributes].blank?
-        for attribute in params[:activity][:documents_attributes].permit!
-          @activity.documents.build(attribute.last.except(:_destroy)) unless attribute.last.has_key?(:id)
+      unless params[:activity][:acdocs_attributes].blank?
+        for attribute in params[:activity][:acdocs_attributes].permit!
+          @activity.acdocs.build(attribute.last.except(:_destroy)) unless attribute.last.has_key?(:id)
         end
       end
-      @activity.documents.build
+      @activity.acdocs.build
       render :action => 'edit'
     else
       respond_to do |format|
