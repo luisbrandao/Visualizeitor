@@ -1,4 +1,5 @@
 class EvaluationsController < ApplicationController
+  before_filter :authenticate_teacher!, exept: [:show]
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
 
   # GET /evaluations

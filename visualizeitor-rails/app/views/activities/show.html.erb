@@ -34,7 +34,7 @@
   <h2>Documentos:</h2>
   <% if @activity.acdocs.any? %>
     <% @activity.acdocs.each do |document| %>
-      Descr: <%= document.descr %>, link <br>
+      Descr: <%= document.descr %>, <%= link_to "Link", document.document.url, target: "_blank"  %> <br>
     <% end %>
   <% end %>
 </p>

@@ -20,15 +20,22 @@
     <div class="form-inline">
       <%= document.label :descr, "Descrição: " %>
       <%= document.text_field :descr %>
-      Caixa de upload
+      <% if document.object.document.exists? %>
+        <%= link_to "link", document.object.document.url, target: "_blank"  %>
+        <%= document.check_box :_destroy %>
+        <%= document.label :_destroy, 'Remover' %>
+      <% else %>
+        <%= document.label :document, "Upload:" %>
+        <%= document.file_field :document, class: 'form-control'%>
+      <% end %>
     </div>
   <% end %>
 
   <p>
-    <%= f.submit 'Adicionar novo documento', :name => "add_item" %>
+    <%= f.submit 'Adicionar novo documento', :name => "add_item", class: 'btn btn-primary'  %>
   </p>
 
-  <div class="actions">
-    <%= f.submit %>
+  <div>
+    <%= f.submit "Enviar", class: 'btn btn-primary' %>
   </div>
 <% end %>

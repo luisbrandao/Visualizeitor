@@ -11,13 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605193149) do
+ActiveRecord::Schema.define(version: 20160605195653) do
 
   create_table "acdocs", force: :cascade do |t|
     t.string   "descr"
     t.integer  "activity_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.string   "document_file_name"
+    t.string   "document_content_type"
+    t.integer  "document_file_size"
+    t.datetime "document_updated_at"
   end
 
   add_index "acdocs", ["activity_id"], name: "index_acdocs_on_activity_id"

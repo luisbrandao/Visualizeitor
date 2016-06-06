@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  # before_filter :authenticate_teacher!
+  before_filter :authenticate_teacher!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories

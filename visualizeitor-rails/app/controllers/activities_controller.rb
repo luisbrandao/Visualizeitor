@@ -1,4 +1,5 @@
 class ActivitiesController < ApplicationController
+  before_filter :authenticate_student!, exept: [:show]
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   # GET /activities
@@ -15,11 +16,12 @@ class ActivitiesController < ApplicationController
   # GET /activities/new
   def new
     @activity = Activity.new
-    @activity.acdocs.build
+    5.times{@activity.acdocs.build}
   end
 
   # GET /activities/1/edit
   def edit
+    2.times{@activity.acdocs.build}
   end
 
   # POST /activities

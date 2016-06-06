@@ -6,8 +6,9 @@ class Student < ActiveRecord::Base
   devise :authentication_keys => [:grr]
 
   has_many :enrollments, -> { order('year ASC, semester ASC') }
-
   has_many :courses, through: :enrollments
+
+  has_one :acform
 
   belongs_to :program
   belongs_to :major

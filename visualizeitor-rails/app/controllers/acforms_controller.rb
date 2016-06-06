@@ -1,9 +1,21 @@
 class AcformsController < ApplicationController
+  before_filter :authenticate_student!, exept: [:show]
   before_action :set_acform, only: [:show, :edit, :update, :destroy]
 
   # GET /acforms
   # GET /acforms.json
   def index
+    if student_signed_in?
+      if current_student.acform.blank?
+        @acform = Acform.new
+        @acform.student_id = current_student.id
+        @acform.save!
+      else
+        @acform = current_student.acform
+        render :action => 'show'
+      end
+    end
+    # DeadCode?
     @acforms = Acform.all
   end
 
