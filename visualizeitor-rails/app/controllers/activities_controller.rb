@@ -28,6 +28,7 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     @activity = Activity.new(activity_params)
+    @activity.acform = current_student.acform
 
     if params[:add_item]
       @activity.acdocs.build

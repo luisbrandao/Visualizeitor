@@ -1,6 +1,6 @@
 class AcformsController < ApplicationController
-  before_filter :authenticate_student!, exept: [:show]
-  before_action :set_acform, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_student!
+  before_action :set_acform, only: [:show, :edit, :update, :destroy, :submit]
 
   # GET /acforms
   # GET /acforms.json
@@ -8,12 +8,14 @@ class AcformsController < ApplicationController
     if student_signed_in?
       if current_student.acform.blank?
         @acform = Acform.new
+        @acform.state = 1
         @acform.student_id = current_student.id
         @acform.save!
-      else
-        @acform = current_student.acform
-        render :action => 'show'
       end
+
+      @activities = current_student.acform.activities
+      @acform = current_student.acform
+      render :action => 'alpage'
     end
     # DeadCode?
     @acforms = Acform.all
@@ -22,6 +24,10 @@ class AcformsController < ApplicationController
   # GET /acforms/1
   # GET /acforms/1.json
   def show
+    @activities = current_student.acform.activities
+      if student_signed_in?
+        render :action => 'alpage'
+      end
   end
 
   # GET /acforms/new
@@ -62,6 +68,27 @@ class AcformsController < ApplicationController
       end
     end
   end
+
+  def submit
+    respond_to do |format|
+      if @acform.complete?
+        if @acform.submit!
+          flash[:success] = 'O formulário foi submetido para avaliação com sucesso!'
+          format.html { redirect_to @acform }
+          format.json { head :no_content }
+        else
+          flash[:danger] = 'Não foi possivel atualizar o estado do formulário'
+          format.html { redirect_to @acform }
+          format.json { head :no_content }
+        end
+      else
+          flash[:danger] = 'Seu formulário não está apto a ser submetido para avaliação'
+          format.html { redirect_to @acform }
+          format.json { head :no_content }
+      end
+    end
+  end
+
 
   # DELETE /acforms/1
   # DELETE /acforms/1.json

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605195653) do
+ActiveRecord::Schema.define(version: 20160612020149) do
 
   create_table "acdocs", force: :cascade do |t|
     t.string   "descr"
@@ -27,10 +27,10 @@ ActiveRecord::Schema.define(version: 20160605195653) do
   add_index "acdocs", ["activity_id"], name: "index_acdocs_on_activity_id"
 
   create_table "acforms", force: :cascade do |t|
-    t.integer  "state"
     t.integer  "student_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "aasm_state"
   end
 
   add_index "acforms", ["student_id"], name: "index_acforms_on_student_id"

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>State:</strong>
   <%= @acform.state %>
@@ -10,5 +8,7 @@
   <%= @acform.student %>
 </p>
 
-<%= link_to 'Edit', edit_acform_path(@acform) %> |
+<% if @acform.open? %>
+  <%= link_to 'Edit', edit_acform_path(@acform) %> |
+<% end %>
 <%= link_to 'Back', acforms_path %>

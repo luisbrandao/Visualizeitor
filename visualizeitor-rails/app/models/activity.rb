@@ -9,5 +9,9 @@ class Activity < ActiveRecord::Base
   belongs_to :acform
   belongs_to :category
 
+  def valid_hours
+    return hours
+  end
+
 
 end

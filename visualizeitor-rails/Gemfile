@@ -33,6 +33,8 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+gem 'aasm'
+
 gem 'execjs'
 gem 'therubyracer'
 gem 'symbolize'

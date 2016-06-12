@@ -7,7 +7,6 @@
       <th>Data do fim</th>
       <th>Horas</th>
       <th>Horas aprovadas</th>
-      <th>Acform</th>
       <th>Categoria</th>
       <th></th>
     </tr>
@@ -20,7 +19,6 @@
         <td><%= activity.end %></td>
         <td><%= activity.hours %></td>
         <td><%= activity.hoursvalid %></td>
-        <td><%= activity.acform %></td>
         <td><%= activity.category %></td>
         <td><%= link_to 'Show', activity %>
         <%= link_to 'Edit', edit_activity_path(activity) %>
@@ -29,7 +27,4 @@
     <% end %>
   </tbody>
 </table>
-
 <br>
-
-<%= link_to 'Nova atividade', new_activity_path %>

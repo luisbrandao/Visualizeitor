@@ -1,0 +1,53 @@
+<p>
+  <strong>Estado:</strong>
+  <%= @acform.state %>
+</p>
+
+<p>
+  <strong>Aluno:</strong>
+  <%= @acform.student %>
+</p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Data de Inicio</th>
+      <th>Data do fim</th>
+      <th>Horas</th>
+      <th>Categoria</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.order('category_id').each do |activity| %>
+      <tr>
+        <td><%= activity.start %></td>
+        <td><%= activity.end %></td>
+        <td><%= activity.hours %></td>
+        <td><%= activity.category %></td>
+        <td><%= link_to 'Show', activity %> <% if @acform.open? %>
+        <%= link_to 'Edit', edit_activity_path(activity) %>
+        <%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %><% end %></td>
+      </tr>
+    <% end %>
+
+      <tr>
+        <td></td>
+        <td></td>
+        <td>Total: <%= @acform.total_hours %></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+  </tbody>
+</table>
+
+<% if @acform.complete? and @acform.open? %>
+  <%= link_to "Enviar para avaliação", submit_acforms_path(@acform), :method=> "submit" %> |
+<% end %>
+
+<% if @acform.open? %>
+  <%= link_to 'Nova atividade', new_activity_path %> |
+<% end %>
+<%= link_to 'Back', acforms_path %>

@@ -5,7 +5,11 @@ Visualizeitor::Application.routes.draw do
 
   resources :evaluations
 
-  resources :acforms
+  resources :acforms do
+    collection do
+      post '/:id/submit',  to: 'acforms#submit',  as: 'submit'
+    end
+  end
 
   resources :internships
 
