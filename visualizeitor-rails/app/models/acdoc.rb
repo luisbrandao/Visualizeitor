@@ -5,6 +5,7 @@ class Acdoc < ActiveRecord::Base
   validates_attachment :document,
                        :presence => true,
                      content_type: { content_type: ["image/jpeg", "image/gif", "image/png", "application/pdf"] }
+  validates :descr, :activity_id, presence: true
 
   def to_s
     descr

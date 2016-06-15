@@ -9,6 +9,8 @@ class Activity < ActiveRecord::Base
   belongs_to :acform
   belongs_to :category
 
+  validates :hours, :acform_id,:category_id, presence: true
+
   def valid_hours
     return hours
   end

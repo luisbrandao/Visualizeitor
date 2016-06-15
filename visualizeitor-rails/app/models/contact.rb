@@ -5,4 +5,6 @@ belongs_to :company
     company.name + " |CNPJ: "+ company.cnpj + " |Contato: " + name
   end
 
+  validates :name, :email, :qualification, :phone, :company_id, presence: true
+
 end

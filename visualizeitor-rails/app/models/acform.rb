@@ -4,6 +4,8 @@ class Acform < ActiveRecord::Base
   has_many :trials
   include AASM
 
+  validates :student_id, presence: true
+
   aasm do
     state :open, :initial => true
     state :queue

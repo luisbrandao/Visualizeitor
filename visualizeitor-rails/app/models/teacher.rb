@@ -5,6 +5,8 @@ class Teacher < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   devise :authentication_keys => [:login]
 
+  validates :name, :access, :email, presence: true
+  validates :login, presence: true, uniqueness: true
 
   def email_required?
     false

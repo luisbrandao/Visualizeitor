@@ -13,6 +13,9 @@ class Student < ActiveRecord::Base
   belongs_to :program
   belongs_to :major
 
+  validates :name, presence: true
+  validates :grr, presence: true, uniqueness: true
+
   def email_required?
     false
   end
