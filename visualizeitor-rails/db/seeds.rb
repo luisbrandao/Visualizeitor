@@ -182,3 +182,51 @@ grade_antiga.program_items << p5
 grade_antiga.program_items << p6
 grade_antiga.program_items << p7
 grade_antiga.program_items << p8
+
+Teacher.create! ([
+{name:"Andre Guedes", login: "andre", access: "0", email:"andre@inf.ufpr.br", password: "123456"},
+{name:"Andre Vignatti", login: "vignatti", access: "2", email:"vignatti@inf.ufpr.br", password: "123456"},
+{name:"Bruno Muller", login: "bmuller", access: "1", email:"bmuller@inf.ufpr.br", password: "123456"},
+{name:"Setembrino S. Ferreira Jr.", login: "setembro", access: "1", email:"setembro@inf.ufpr.br", password: "123456"},
+{name:"Andrey Ricardo Pimentel", login: "andrey", access: "1", email:"andrey@inf.ufpr.br", password: "123456"},
+{name:"Eduardo Todt", login: "todt", access: "2", email:"todt@inf.ufpr.br", password: "123456"},
+{name:"Laura Sanchez Garcia", login: "laura", access: "0", email:"laura@inf.ufpr.br", password: "123456"},
+{name:"Elias P. Duarte Jr.", login: "elias", access: "0", email:"elias@inf.ufpr.br", password: "123456"},
+{name:"Leticia Leoni", login: "leticia", access: "0", email:"leticia@inf.ufpr.br", password: "123456"}
+])
+
+Category.create! ([
+{descr:"Participação em iniciação científica", softlimit: "180", hardlimit: "360"},
+{descr:"Participação no PET", softlimit: "180", hardlimit: "360"},
+{descr:"Participação em atividades oficiais de extensão universitária de acordo com plano de trabalho reconhecido na Universidade comprovante fornecido pelo coordenador do projeto", softlimit: "180", hardlimit: "360"},
+{descr:"Atividades de bolsista institucional", softlimit: "360", hardlimit: "360"},
+{descr:"Atividades de monitoria", softlimit: "360", hardlimit: "360"},
+{descr:"Estágios", softlimit: "180", hardlimit: "360"},
+{descr:"Disciplinas eletivas", softlimit: "360", hardlimit: "360"},
+{descr:"Disciplinas isoladas", softlimit: "180", hardlimit: "180"},
+{descr:"Intercâmbios em outras IFES ou no exterior", softlimit: "360", hardlimit: "360"},
+{descr:"Participação em empresa júnior", softlimit: "120", hardlimit: "240"},
+{descr:"Atividades de tutoria em Educação à distância", softlimit: "120", hardlimit: "120"},
+{descr:"Participação em evento (seminário, jornada, encontro, fórum, congresso, palestra técnica ou científica)", softlimit: "120", hardlimit: "120"},
+{descr:"Participação em órgãos de representação estudantil (CEI, DEC, ENEC, UNE)", softlimit: "60", hardlimit: "120"},
+{descr:"Representação estudantil em órgãos colegiados", softlimit: "15", hardlimit: "180"},
+{descr:"Organização de eventos técnico-científicos", softlimit: "30", hardlimit: "60"}
+])
+
+Company.create! ([
+{name:"Soluções SA.", cnpj:"78.425.986/0036-15", activity: "Desenvolvcimento web"},
+{name:"Gold Doze Systems", cnpj:"03.474.482/0001-00", activity: "Desenvolvcimento web"},
+{name:"Ironheart Services", cnpj:"81.815.303/0001-64", activity: "Infra-estrutura"},
+{name:"Trifid", cnpj:"28.598.758/0001-92", activity: "Componentes quimicos"}
+])
+
+Contact.create! ([
+{name:"Carleen Caruso", email:"email@email.com", qualification:"Engenharia da computação", phone:"(27) 7823-4498", company_id:"1"},
+{name:"Devona Colburn", email:"email@email.com", qualification:"Engenharia química", phone:"(11) 2840-9118", company_id:"1"},
+{name:"Burl Knudsen", email:"email@email.com", qualification:"Administração", phone:"(11) 3234-5270", company_id:"1"},
+{name:"Tim Marsh ", email:"email@email.com", qualification:"Advocacia", phone:"(48) 2124-8867", company_id:"2"},
+{name:"Armand Swyers", email:"email@email.com", qualification:"Ciencia da computacao", phone:"(21) 8005-9041", company_id:"2"},
+{name:"Elbert Nellis", email:"email@email.com", qualification:"Adminstração", phone:"(11) 8192-5258", company_id:"3"},
+{name:"Jamey Lehmkuhl", email:"email@email.com", qualification:"Design", phone:"(31) 7644-2434", company_id:"4"},
+{name:"Amos Hawkins", email:"email@email.com", qualification:"Engenharia Civil", phone:"(81) 9479-6072", company_id:"4"}
+])

@@ -1,0 +1,47 @@
+<ul class="nav">
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown">
+      Visualizator
+      <span class="caret"></span>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Disciplinas", courses_path  %></li>
+        <li><%= link_to "Alunos", students_path  %></li>
+      </ul>
+  </li>
+
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown">
+      Atividades Formativas
+      <span class="caret"></span>
+      <ul class="dropdown-menu">
+        <% if(current_teacher.access == 1) %>
+          <li><%= link_to "Categorias", categories_path  %></li>
+          <li><%= link_to "Processos pendentes", acforms_fila_path  %></li>
+        <% end %>
+        <li><%= link_to "Processos aprovados", acforms_aprovados_path  %></li>
+        <li><%= link_to "Processos processados", acforms_processados_path  %></li>
+      </ul>
+  </li>
+
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown">
+      Cadastros de estágio
+      <span class="caret"></span>
+      <ul class="dropdown-menu">
+        <li><%= link_to "Empresas", companies_path  %></li>
+        <li><%= link_to "Contratos de estágio", internships_path  %></li>
+        <li><%= link_to "Minhas orientações", internships_personal_path %></li>
+      </ul>
+  </li>
+  <% if(current_teacher.access == 2) %>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown">
+        Administração
+        <span class="caret"></span>
+        <ul class="dropdown-menu">
+          <li><%= link_to "Cursos", majors_path  %></li>
+          <li><%= link_to "Professores", teachers_path  %></li>
+        </ul>
+    </li>
+  <% end %>
+</ul>

@@ -17,4 +17,9 @@ class Teacher < ActiveRecord::Base
   def to_s
     name
   end
+
+  def access_txt
+    ["Professor", "Comissão de avaliação de atividades formativas","Coordenação"][self.access]
+  end
 end
+

@@ -1,4 +1,5 @@
 class MajorsController < ApplicationController
+  before_filter :authenticate_teacher!
   before_action :set_major, only: [:show, :edit, :update, :destroy]
 
   # GET /majors

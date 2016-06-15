@@ -1,15 +1,13 @@
-<p id="notice"><%= notice %></p>
+<h1>Listando professores</h1>
 
-<h1>Listing Teachers</h1>
-
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
       <th>Login</th>
       <th>Access</th>
       <th>Email</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -18,11 +16,10 @@
       <tr>
         <td><%= teacher.name %></td>
         <td><%= teacher.login %></td>
-        <td><%= teacher.access %></td>
+        <td><%= teacher.access_txt %></td>
         <td><%= teacher.email %></td>
-        <td><%= link_to 'Show', teacher %></td>
-        <td><%= link_to 'Edit', edit_teacher_path(teacher) %></td>
-        <td><%= link_to 'Destroy', teacher, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', teacher %>
+        <%= link_to 'Edit', edit_teacher_path(teacher) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Teacher', new_teacher_path %>
+<%= link_to 'Cadastrar Professor', new_teacher_path %>

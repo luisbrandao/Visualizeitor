@@ -14,7 +14,6 @@ Visualizeitor::Application.routes.draw do
     get 'aprovados'
     get 'processados'
     get 'fila'
-#    get 'avalia' ? eu usei isso?
   end
 
   resources :acforms do
@@ -22,6 +21,10 @@ Visualizeitor::Application.routes.draw do
       post '/:id/submit',  to: 'acforms#submit',  as: 'submit'
       post '/:id/processed',  to: 'acforms#processed',  as: 'processed'
     end
+  end
+
+  namespace :internships do
+    get 'personal'
   end
 
   resources :internships

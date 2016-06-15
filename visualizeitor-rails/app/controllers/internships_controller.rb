@@ -12,6 +12,11 @@ class InternshipsController < ApplicationController
     end
   end
 
+  def personal
+    @internships = Internship.all.where(teacher_id: current_teacher.id)
+    render :action => 'index'
+  end
+
   # GET /internships/1
   # GET /internships/1.json
   def show

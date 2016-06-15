@@ -37,7 +37,6 @@
     <%= javascript_include_tag "application" %>
   </head>
   <body>
-
     <div class="navbar navbar-fluid-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -48,83 +47,23 @@
           </a>
           <a class="brand" href=<%=displays_path%>>Visualizeitor</a>
 
+          <% if teacher_signed_in? %>
+            <%= render 'layouts/teacher' %>
+          <% elsif student_signed_in? %>
+            <%= render 'layouts/student' %>
+          <% end %>
+
           <div class="container-fluid nav-collapse">
-            <ul class="nav">
-                <% if teacher_signed_in? %>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown">
-                    Visualizator
-                    <span class="caret"></span>
-                  </button>
-                    <ul class="dropdown-menu">
-                      <li><%= link_to "Cursos", majors_path  %></li>
-                      <li><%= link_to "Estudantes", students_path  %></li>
-                      <li><%= link_to "Disciplinas", courses_path  %></li>
-                      <li><%= link_to "Professores", teachers_path  %></li>
-                      <li><%= link_to "Alunos", students_path  %></li>
-                    </ul>
-                </li>
-              <% end %>
-
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown">
-                  Atividades Formativas
-                  <span class="caret"></span>
-                </button>
-                  <ul class="dropdown-menu">
-
-                    <li><%= link_to "trials", trials_path  %></li>
-                    <li><%= link_to "activities", activities_path  %></li>
-
-                    <li><%= link_to "Cadastros", acforms_path  %></li>
-
-                    <% if teacher_signed_in? %>
-                      <li><%= link_to "Categorias", categories_path  %></li>
-                      <li><%= link_to "Processos pendentes", acforms_fila_path  %></li>
-                      <li><%= link_to "Processos aprovados", acforms_aprovados_path  %></li>
-                      <li><%= link_to "Processos processados", acforms_processados_path  %></li>
-                    <% end %>
-                  </ul>
-              </li>
-
-              <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown">
-                  Cadastros de estágio
-                  <span class="caret"></span>
-                </button>
-                  <ul class="dropdown-menu">
-                    <li><%= link_to "Empresas", companies_path  %></li>
-                    <% if student_signed_in? %>
-                      <li><%= link_to "Cadastrar estágio", new_internship_path  %></li>
-                    <% end %>
-                    <li><%= link_to "Contratos de estágio", internships_path  %></li>
-                  </ul>
-              </li>
-              <% if teacher_signed_in? %>
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown">
-                    Administração
-                    <span class="caret"></span>
-                  </button>
-                    <ul class="dropdown-menu">
-                      <li><%= link_to "Cursos", majors_path  %></li>
-                      <li><%= link_to "Professores", teachers_path  %></li>
-                      <li><%= link_to "Estudantes", students_path  %></li>
-                      <li><%= link_to "Contratos de estágio", internships_path  %></li>
-                    </ul>
-                </li>
-              <% end %>
-            </ul>
             <ul class="nav pull-right">
               <% if teacher_signed_in? %>
-              <li><%# link_to 'Edit profile', edit_teacher_registration_path, :class => 'navbar-link' %></li>
-              <li><%= link_to "Logout", destroy_teacher_session_path, method: :delete, :class => 'navbar-link'  %></li>
+                <li><%# link_to 'Edit profile', edit_teacher_registration_path, :class => 'navbar-link' %></li>
+                <li><%= link_to "Logout", destroy_teacher_session_path, method: :delete, :class => 'navbar-link'  %></li>
               <% elsif student_signed_in? %>
-              <li><%= link_to 'Edit profile', edit_student_registration_path, :class => 'navbar-link' %></li>
-              <li><%= link_to "Logout", destroy_student_session_path, method: :delete, :class => 'navbar-link'  %></li>
+                <li><%= link_to 'Edit profile', edit_student_registration_path, :class => 'navbar-link' %></li>
+                <li><%= link_to "Logout", destroy_student_session_path, method: :delete, :class => 'navbar-link'  %></li>
               <% else %>
-              <li><%= link_to "Login - Professor", new_teacher_session_path, :class => 'navbar-link'  %></li>
-              <li><%= link_to "Login - Aluno", new_student_session_path, :class => 'navbar-link'  %></li>
+                <li><%= link_to "Login - Professor", new_teacher_session_path, :class => 'navbar-link'  %></li>
+                <li><%= link_to "Login - Aluno", new_student_session_path, :class => 'navbar-link'  %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
