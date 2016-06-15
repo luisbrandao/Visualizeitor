@@ -1,6 +1,7 @@
 class AcformsController < ApplicationController
-  before_filter :authenticate_student!
-  before_action :set_acform, only: [:show, :edit, :update, :destroy, :submit]
+  before_filter :authenticate_teacher!, only: [:fila]
+  #before_filter :authenticate_student!, exept: [:fila]
+  before_action :set_acform, only: [:show, :edit, :update, :destroy, :submit, :processed]
 
   # GET /acforms
   # GET /acforms.json
@@ -21,11 +22,23 @@ class AcformsController < ApplicationController
     @acforms = Acform.all
   end
 
+  def fila
+    @acforms = Acform.all.where(aasm_state: "queue")
+  end
+  def aprovados
+    @acforms = Acform.all.where(aasm_state: "approved")
+  end
+  def processados
+    @acforms = Acform.all.where(aasm_state: "processed")
+  end
+
+
+
   # GET /acforms/1
   # GET /acforms/1.json
   def show
-    @activities = current_student.acform.activities
       if student_signed_in?
+        @activities = current_student.acform.activities
         render :action => 'alpage'
       end
   end
@@ -89,6 +102,19 @@ class AcformsController < ApplicationController
     end
   end
 
+  def processed
+    respond_to do |format|
+      if @acform.process!
+        flash[:success] = 'O formulário foi marcado como processado com sucesso!'
+        format.html { redirect_to @acform }
+        format.json { head :no_content }
+      else
+        flash[:danger] = 'Não foi possivel marcar como processado o estado do formulário'
+        format.html { redirect_to @acform }
+        format.json { head :no_content }
+      end
+    end
+  end
 
   # DELETE /acforms/1
   # DELETE /acforms/1.json

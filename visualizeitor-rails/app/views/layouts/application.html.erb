@@ -72,10 +72,18 @@
                   <span class="caret"></span>
                 </button>
                   <ul class="dropdown-menu">
-                    <li><%= link_to "categories", categories_path  %></li>
-                    <li><%= link_to "evaluations", evaluations_path  %></li>
-                    <li><%= link_to "acforms", acforms_path  %></li>
+
+                    <li><%= link_to "trials", trials_path  %></li>
                     <li><%= link_to "activities", activities_path  %></li>
+
+                    <li><%= link_to "Cadastros", acforms_path  %></li>
+
+                    <% if teacher_signed_in? %>
+                      <li><%= link_to "Categorias", categories_path  %></li>
+                      <li><%= link_to "Processos pendentes", acforms_fila_path  %></li>
+                      <li><%= link_to "Processos aprovados", acforms_aprovados_path  %></li>
+                      <li><%= link_to "Processos processados", acforms_processados_path  %></li>
+                    <% end %>
                   </ul>
               </li>
 

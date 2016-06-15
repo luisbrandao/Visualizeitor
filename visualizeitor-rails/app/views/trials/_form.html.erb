@@ -21,7 +21,7 @@
   </thead>
 
   <tbody>
-    <% @acform.activities.order('category_id').each do |activity| %>
+    <% @activities.order('category_id').each do |activity| %>
       <tr>
         <td><%= activity.start %></td>
         <td><%= activity.end %></td>
@@ -50,39 +50,43 @@
 
   </tbody>
 </table>
+<% if @acform.trials.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Professor</th>
+        <th>Parecer</th>
+        <th>Comentário</th>
+        <th>Atual?</th>
+      </tr>
+    </thead>
 
-<% if teacher_signed_in? %>
-  <% if @acform.trials.any? %>
-    <table class="table table-striped">
-      <thead>
+    <tbody>
+      <%@acform.trials.order('acctual').each do |trial| %>
         <tr>
-          <th>Professor</th>
-          <th>Parecer</th>
-          <th>Comentário</th>
-          <th>Atual?</th>
+          <td><%= trial.teacher %></td>
+          <td><%= trial.state ? "Aprovado" : "Recusado" %></td>
+          <td><%= h(trial.comment).gsub(/\n/, '<br/>').html_safe %></td>
+          <td><%= trial.acctual ? "Sim" : "Não" %></td>
         </tr>
-      </thead>
-
-      <tbody>
-        <%@acform.trials.order('acctual').each do |trial| %>
-          <tr>
-            <td><%= trial.teacher %></td>
-            <td><%= trial.state_txt %></td>
-            <td><%= h(trial.comment).gsub(/\n/, '<br/>').html_safe %></td>
-            <td><%= trial.acctual ? "Sim" : "Não" %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  <% end %>
+      <% end %>
+    </tbody>
+  </table>
 <% end %>
 
+<%= form_for(@trial) do |f| %>
+  <div class="field">
+    <%= f.label :state, "Parecer:" %><br />
+    <%= f.select :state, [["Aprovado", 0], ["Recusado", 1]] %>
+  </div>
+  <div class="field">
+    <%= f.label :comment, "Comentário" %><br>
+    <%= f.text_area :comment %>
+  </div>
 
-<% if @acform.approved? %>
-  <%= link_to "Marcar como processado", processed_acforms_path(@acform), :method=> "submit" %> |
-<% end %>
+  <%= f.hidden_field :acform_id %>
 
-<% if teacher_signed_in? && @acform.aasm_state == "queue" %>
-  <%= link_to 'Avaliar', avaliacao_trials_path(@acform.id) %> |
+  <div class="actions">
+    <%= f.submit %>
+  </div>
 <% end %>
-<%= link_to 'Back', acforms_fila_path %>

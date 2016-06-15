@@ -1,5 +1,5 @@
 class ActivitiesController < ApplicationController
-  before_filter :authenticate_student!, exept: [:show]
+  #before_filter :authenticate_student!, exept: [:show]
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
   # GET /activities

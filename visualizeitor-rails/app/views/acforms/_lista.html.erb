@@ -1,0 +1,19 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>State</th>
+      <th>Student</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @acforms.each do |acform| %>
+      <tr>
+        <td><%= acform.state %></td>
+        <td><%= acform.student %></td>
+        <td><%= link_to 'Show', acform %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

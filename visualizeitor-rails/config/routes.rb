@@ -1,13 +1,26 @@
 Visualizeitor::Application.routes.draw do
+  resources :trials do
+    collection do
+      get '/avaliacao/:id', to: 'trials#avaliacao', as: 'avaliacao'
+    end
+  end
+
+
   resources :categories
 
   resources :activities
 
-  resources :evaluations
+  namespace :acforms do
+    get 'aprovados'
+    get 'processados'
+    get 'fila'
+#    get 'avalia' ? eu usei isso?
+  end
 
   resources :acforms do
     collection do
       post '/:id/submit',  to: 'acforms#submit',  as: 'submit'
+      post '/:id/processed',  to: 'acforms#processed',  as: 'processed'
     end
   end
 

@@ -1,6 +1,7 @@
 class Acform < ActiveRecord::Base
   belongs_to :student
   has_many :activities
+  has_many :trials
   include AASM
 
   aasm do
@@ -11,10 +12,11 @@ class Acform < ActiveRecord::Base
     state :processed
 
     event :submit do
-      transitions :from => :open, :to => :queue
-    end
+      before do
+        update_old
+      end
 
-    event :resubmit do
+      transitions :from => :open, :to => :queue
       transitions :from => :denied, :to => :queue
     end
 
@@ -74,4 +76,39 @@ class Acform < ActiveRecord::Base
       return false
     end
   end
+
+  def update_old
+    self.trials.each do | trial |
+      trial.acctual = false
+      trial.save!
+    end
+  end
+
+  def checa_estado
+    if (self.aasm_state == "queue")
+      positivos=0
+      negativos=0
+      validos=0
+      self.trials.each do |parecer|
+        if parecer.acctual
+          if (parecer.state == 0)
+            positivos = positivos + 1
+          else
+            negativos = negativos + 1
+          end
+          validos = validos + 1
+        end
+      end
+
+      if (validos >= 3)
+        if (positivos > negativos)
+          self.aprove!
+        else
+          self.deny!
+        end
+      end
+    end
+  end
 end
+
+

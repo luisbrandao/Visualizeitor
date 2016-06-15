@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612020149) do
+ActiveRecord::Schema.define(version: 20160614210237) do
 
   create_table "acdocs", force: :cascade do |t|
     t.string   "descr"
@@ -106,18 +106,6 @@ ActiveRecord::Schema.define(version: 20160612020149) do
     t.datetime "updated_at"
   end
 
-  create_table "evaluations", force: :cascade do |t|
-    t.string   "state"
-    t.integer  "teacher_id"
-    t.integer  "acform_id"
-    t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  add_index "evaluations", ["acform_id"], name: "index_evaluations_on_acform_id"
-  add_index "evaluations", ["teacher_id"], name: "index_evaluations_on_teacher_id"
-
   create_table "internships", force: :cascade do |t|
     t.date     "start"
     t.date     "end"
@@ -204,5 +192,18 @@ ActiveRecord::Schema.define(version: 20160612020149) do
 
   add_index "teachers", ["login"], name: "index_teachers_on_login", unique: true
   add_index "teachers", ["reset_password_token"], name: "index_teachers_on_reset_password_token", unique: true
+
+  create_table "trials", force: :cascade do |t|
+    t.integer  "state"
+    t.integer  "teacher_id"
+    t.integer  "acform_id"
+    t.text     "comment"
+    t.boolean  "acctual"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "trials", ["acform_id"], name: "index_trials_on_acform_id"
+  add_index "trials", ["teacher_id"], name: "index_trials_on_teacher_id"
 
 end
