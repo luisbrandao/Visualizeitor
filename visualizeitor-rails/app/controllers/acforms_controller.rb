@@ -12,14 +12,13 @@ class AcformsController < ApplicationController
         @acform.aasm_state = "open"
         @acform.student_id = current_student.id
         @acform.save!
-        @activities = @acform.activitie
+        @activities = @acform.activities
+        render :action => 'alpage'
+      else
+        @acform = current_student.acform
+        @activities = @acform.activities
         render :action => 'alpage'
       end
-
-      @acform = current_student.acform
-      @activities = @acform.activities
-
-      render :action => 'alpage'
     end
     # DeadCode?
     @acforms = Acform.all
