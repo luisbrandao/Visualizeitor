@@ -14,6 +14,7 @@
       <th>Data de Inicio</th>
       <th>Data do fim</th>
       <th>Horas</th>
+      <th>Horas Válidas</th>
       <th>Categoria</th>
       <th>Documentos</th>
       <th></th>
@@ -26,6 +27,7 @@
         <td><%= activity.start %></td>
         <td><%= activity.end %></td>
         <td><%= activity.hours %></td>
+        <td><%= activity.valid_hours %></td>
         <td><%= activity.category %></td>
         <td>
           <% if activity.acdocs.any? %>
@@ -43,8 +45,8 @@
       <tr>
         <td></td>
         <td></td>
-        <td>Total: <%= @acform.total_hours %></td>
         <td></td>
+        <td>Total: <%= @acform.total_hours %></td>
         <td></td>
       </tr>
 
