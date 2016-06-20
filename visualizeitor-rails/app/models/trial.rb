@@ -4,7 +4,7 @@ class Trial < ActiveRecord::Base
 
   accepts_nested_attributes_for :acform
 
-  validates :state, :teacher_id, :acform_id, :acctual, presence: true
+  validates :state, :teacher_id, :acform_id, presence: true
 
 
   after_save :checa_estado

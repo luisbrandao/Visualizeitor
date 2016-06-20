@@ -9,13 +9,16 @@ class AcformsController < ApplicationController
     if student_signed_in?
       if current_student.acform.blank?
         @acform = Acform.new
-        @acform.state = 1
+        @acform.aasm_state = "open"
         @acform.student_id = current_student.id
         @acform.save!
+        @activities = @acform.activitie
+        render :action => 'alpage'
       end
 
-      @activities = current_student.acform.activities
       @acform = current_student.acform
+      @activities = @acform.activities
+
       render :action => 'alpage'
     end
     # DeadCode?

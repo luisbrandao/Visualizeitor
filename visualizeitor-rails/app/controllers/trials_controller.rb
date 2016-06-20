@@ -39,7 +39,7 @@ class TrialsController < ApplicationController
 
     respond_to do |format|
       if @trial.save
-        format.html { redirect_to @trial, notice: 'Trial was successfully created.' }
+        format.html { redirect_to :controller => 'acforms', :action => 'show', :id => @trial.acform.id  }
         format.json { render action: 'show', status: :created, location: @trial }
       else
         format.html { render action: 'new' }
@@ -53,7 +53,7 @@ class TrialsController < ApplicationController
   def update
     respond_to do |format|
       if @trial.update(trial_params)
-        format.html { redirect_to @trial, notice: 'Trial was successfully updated.' }
+        format.html { redirect_to :controller => 'acforms', :action => 'show', :id => @trial.acform.id  }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
