@@ -20,7 +20,7 @@
     <div class="form-inline">
       <%= document.label :descr, "Descrição: " %>
       <%= document.text_field :descr %>
-      <% if document.object.document.exists? %>
+      <% if (document.object.document.exists? and current_student.acform.open? ) %>
         <%= link_to "link", document.object.document.url, target: "_blank"  %>
         <%= document.check_box :_destroy %>
         <%= document.label :_destroy, 'Remover' %>
